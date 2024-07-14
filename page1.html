@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grievances Dashboard</title>
+    <link href="stylepage1.css" rel="stylesheet">
+    <link href="page1java.js" rel="javascript">
+</head>
+<body>
+    <p>Hi User,</p>
+    <h2>Welcome to GRWM Store!</h2>
+    <div class="container"><!--Dashboard starting-->
+        <div class="dashboard">
+            <h2>GRWM STORE</h2>
+            <ul>
+                <li>Grievances</li>
+                <li>Details</li>
+                <li>Order Tracking</li>
+            </ul>
+            
+        </div>
+    </div>
+    <form class="form"><!--grievance registration starting-->
+        <legend>Grievance Registration</legend>
+        <fieldset>
+           <label for="name">Name
+            <input placeholder="Enter Name" required id="name" type="text">
+           </label>
+           <label for="address">Address
+            <input id="address" placeholder="Enter Address" type="text" required>
+           </label>
+           <label for="reason"> Return Reason
+            <select id="reason" onchange="updatePlaceholder()" required>
+                <option value="" selected disabled hidden>Select Return Reason</option>
+                <option value="1">Size/Fit Issue</option>
+                <option value="2">Damaged/Used Product</option>
+                <option value="3">Quality Issue</option>
+                <option value="4">Shipping Delay</option>
+                <option value="5">Item Missing in the Package</option>
+                <option value="6">Different Product Delivered</option>
+                <option value="7">Product not needed anymore</option>
+                <option>Others</option>
+            </select>
+
+           </label>
+           <label for="bill">Invoice/Bill 
+            <input id="bill" type="file" placeholder="Upload File">
+           </label>
+           <label for="email">Email Address  
+            <input id="email" type="email" placeholder="Enter Email Address" >
+           </label>
+           <label for="number"> Phone Number 
+            <input id="number" placeholder="Enter Phone Number" type="number">
+           </label>
+           <label for="problem">Problem Description 
+            <input id="problem" placeholder="Enter Problem Description" type="text"> 
+           </label>
+           <label for="date">Invoice Date  
+            <input id="date" placeholder="Date" type="date">
+           </label>
+        </fieldset>
+        <div class="button-container">
+        <button  class="submit" type="submit">SUBMIT</button>
+        </div>
+    </form>
+</body>
+</html>
