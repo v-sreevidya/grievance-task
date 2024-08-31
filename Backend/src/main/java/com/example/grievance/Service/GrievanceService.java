@@ -40,7 +40,10 @@ public class GrievanceService {
         Grievance grievance = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Grievance not found"));
 
-        grievance.setTitle(grievanceDetails.getTitle());
+        grievance.setName(grievanceDetails.getName());
+        grievance.setEmail(grievanceDetails.getEmail());
+        grievance.setReason(grievanceDetails.getReason());
+
         grievance.setDescription(grievanceDetails.getDescription());
 
         // Update the status only if it's one of the allowed statuses

@@ -16,10 +16,18 @@ public class Grievance {
 
 
     @Column(nullable = false)
-    private String title;
+    private String name;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String reason;
 
     @Column(nullable = false)
     private String description;
+
+
 
     @Column(nullable = false)
     private String status;
