@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.Signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../../Assets/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+.left_section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.side_image {
+    height: 100vh;
+    display: inline;
+    object-fit: cover;
+}
+
+
+
+.right-section {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box-signup{
+  width: 450px;
+  height: 530px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 20px 20px;
+}
+
+
+.header {
+  width: 100%;
+  padding: 0px 10px ;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: center;
+
+}
+
+.first {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+}
+.second {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.second:hover{
+  cursor: pointer;
+}
+.header-welcome{
+  font-size: 16px;
+}
+.header-grwmstore{
+  margin-left: 5px;
+  font-weight: 600;
+  color: #4B0900;
+
+}
+
+.header-haveaccount, .header-signin{
+  font-size: 10px;
+}
+.header-signin{
+  color: #4B0900;
+}
+.intro{
+  width: 100%;
+  padding: 0px 10px;
+}
+.into-signup{
+  padding-top: 20px;
+  font-size: 48px;
+  font-weight: 500;
+}
+.complaintregistration
+{
+  padding-top: 8px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.form-signup{
+  width: 100%;
+  padding: 20px 10px;
+}
+.form-name{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+
+.name-label{
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+.name-input{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.form-email{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px;
+}
+
+.email-label{
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.email-input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.form-phone-number{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px;
+}
+.phone-number-label{
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+  
+.phone-number-input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.form-address{
+    display: flex;
+    flex-direction: column;
+}
+.address-label{
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+  
+.address-input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.footer-signup{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  padding: 0px 10px;
+  padding-top: 0px;
+}
+
+
+.button-next{
+  width: 160px;
+  padding: 10px 60px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4B0900;
+  color: white;
+}
+.button-next:hover{
+ cursor:pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit; 
+}
+
