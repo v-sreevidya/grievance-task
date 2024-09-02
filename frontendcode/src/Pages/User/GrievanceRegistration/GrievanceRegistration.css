@@ -12,42 +12,42 @@
 .registration-name{
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
     padding-right: 33px;
 }
   
 .registration-name-label{
     padding-bottom: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
   
 .registration-name-input{
+    width: 400px;
     padding: 10px;
-    padding-right: 230px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 /* EMAIL */
 .registration-email{
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
 
 }
   
 .registration-email-label{
     padding-bottom: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
   
 .registration-email-input{
+    width: 400px;
     padding: 10px;
-    padding-right: 230px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 
@@ -55,93 +55,93 @@
 .registration-address{
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
     padding-right: 33px;
 }
   
 .registration-address-label{
     padding-bottom: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
   
 .registration-address-input{
+    width: 400px;
     padding: 10px;
-    padding-right: 230px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 /* PHONE NO */
 .registration-phoneNo{
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
 }
   
 .registration-phoneNo-label{
     padding-bottom: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
   
 .registration-phoneNo-input{
+    width: 400px;
     padding: 10px;
-    padding-right: 230px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 /* REASON */
 .registration-reason{
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
     padding-right: 33px;
 }
   
 .registration-reason-label{
     padding-bottom: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
   
 .registration-reason-input{
+    width: 400px;
     padding: 10px;
-    padding-right: 142px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 14px;
 }
 /* DESCRIPTION */
 .registration-description{
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
 }
   
 .registration-description-label{
     padding-bottom: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
   
 .registration-description-input{
+    width: 400px;
     padding: 10px;
-    padding-right: 230px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 /* INVOICE */
 .registration-invoice{
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
 }
   
 .registration-invoice-label{
     padding-bottom: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .file-input{
@@ -159,10 +159,10 @@
     padding: 10px;
     padding-bottom: 7px;
     padding-top: 7px;
-    padding-right: 150px;
+    width: 400px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 14px;
     position: relative;
     
 
@@ -200,12 +200,12 @@
 .registration-invoiceDate {
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
 }
   
 .registration-invoiceDate-label {
     padding-bottom: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .calender-input {
@@ -216,10 +216,11 @@
   
 .registration-invoiceDate-input {
     padding: 8px;
-    width: 350px;
+    width: 400px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 14px;
     position: relative;
 }
 
@@ -325,7 +326,7 @@
 
 .ticket-heading{
     margin-top: 24px;
-    font-size: 18px;
+    font-size: 32px;
     font-weight: 400;
 }
 

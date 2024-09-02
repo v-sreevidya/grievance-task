@@ -7,14 +7,14 @@ function NotificationUser() {
       <div className="grievance-top-notification">
         <div className="top-section-notification">
           <div className='welcome_note'>
-            <div className='note1'>Hi user,</div>
+            <div className='note1'>Hi User,</div>
             <div className='note2'>Welcome to GRWM Store!</div>
           </div>
         </div>
 
         <div className='list_container'>
-        <div className="title_bar">
-          <div className='title'>Notification</div>
+        <div className="title_bar_notification">
+          <div className='title-notification'>Notifications</div>
         </div>
         <div class="horizontal-line-first"></div>
           <div className="notification-list">

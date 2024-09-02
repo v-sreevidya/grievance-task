@@ -15,6 +15,10 @@ const grievances = [
   { ticketNo: '123458', date: '2024-01-17', status: 'INPROGRESS' },
   { ticketNo: '123459', date: '2024-01-18', status: 'RESOLVED' },
   { ticketNo: '123460', date: '2024-01-19', status: 'CLOSED' },
+  { ticketNo: '123456', date: '2024-01-15', status: 'PENDING' },
+  { ticketNo: '123457', date: '2024-01-16', status: 'OPEN' },
+  { ticketNo: '123458', date: '2024-01-17', status: 'INPROGRESS' },
+ 
 ];
 
 
@@ -46,7 +50,7 @@ function Grievances() {
     <div className='grievance_main'>
       <div className="grievance_top">
         <div className='welcome_note'>
-                <div className='note1'>Hi user,</div>
+                <div className='note1'>Hi User,</div>
                 <div className='note2'>Welcome to GRWM Store!</div>
               </div>
               <div className="search">

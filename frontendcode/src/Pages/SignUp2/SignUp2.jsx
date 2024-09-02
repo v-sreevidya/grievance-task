@@ -40,14 +40,23 @@ function SignUp2() {
                 <div className='form-signup2'>
                     <form>
                         <div>
-                            <div className="form-username">
-                                <label className="username-label">Username / Email Address</label>
-                                <input className="username-input" type="text" id="username" name="username" placeholder="Enter Username / Email Address" />
+                            <div className="form-username-signup2">
+                                <label className="username-label-signup2">Username / Email Address</label>
+                                <input className="username-input-signup2" type="text" id="username" name="username" placeholder="Enter Username / Email Address" />
                             </div>
 
-                            <div className="form-password">
+                            <div className="form-password-signup2">
                                 <label className="password-label">Password</label>
-                                <input className="password-input" type="password" id="password" name="password" placeholder="Enter Password" />
+                                <input className="password-input-signup2" type="password" id="password" name="password" placeholder="Enter Password" />
+                            </div>
+
+                            <div className="form-role-signup2">
+                                <label className="role-label-signup2">Role</label>
+                                <select className='role-input' defaultValue="1">
+                                    <option value="1">Select Role </option>
+                                    <option value="2">USER</option>
+                                    <option value="3">ADMIN</option>
+                                </select>
                             </div>
                         </div>  
                     </form>

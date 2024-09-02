@@ -64,18 +64,7 @@
     font-weight: 600;
 }
 
-button{
 
-    background-color: #23455F;
-    width: 75px;
-    height:42px ;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    color: #ffffff;
-    font-weight: 600;
-    
-}
 .horizontal-line {
     margin: 15px 0px;
     height: 1px;
@@ -92,7 +81,7 @@ button{
 
 }
 
-.ticket_no{
+.ticket_no_supervisor{
     padding-left: 65px;
     display: flex;
     align-items: center;
@@ -102,14 +91,35 @@ button{
     width: 24px;
     height: 24px;
 }
-.date{
+.date_supervisor{
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding: 0px 250px 0px 230px;
+    padding-left: 25px;
 }
 
-.status{
+.user_id_supervisor{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 50px;
+}
+
+.assignee_id_supervisor{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 20px; 
+}
+
+.category_supervisor{
+    display: flex;
+    align-items: center;
+    flex-direction: row;   
+}
+
+
+.status_supervisor{
     padding-right: 90px;
     display: flex;
     align-items: center;
@@ -129,7 +139,7 @@ button{
 .grievance-table{
     font-size: 15px;
     font-weight: 600;
-    color: #7d7d7d;
+    color: #7D7D7D;
     padding: 0px 65px 0px 65px;
     flex-direction: row;
     align-items: center;
@@ -148,20 +158,43 @@ button{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    transition: background-color 0.3s;
+}
+
+.list_row:hover{
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
 
 
-
-.list_data_ticketNo{
+.list_data_ticketNo_supervisor{
+    
     text-align: left; 
     padding: 10px;
 }
-.list_data_date{
-    text-align: center;
+.list_data_date_supervisor{
+    text-align: center; 
     padding: 10px;
     
 }
-.list_data_status{
+.list_data_userid_supervisor{
+    text-align: center; 
+    padding: 10px;
+}
+
+.list_data_assigneeid_supervisor{
+    text-align: center;
+    padding: 10px; 
+    
+}
+.list_data_category_supervisor{
+    text-align: center; 
+    padding: 10px;
+}
+.list_data_status_supervisor{
     width: 120px;
     text-align: left;
     display: flex;
@@ -176,6 +209,73 @@ button{
     width: 8px;
 }
 
+.delete_button{
+    background-color: #ddd;
+    width: 80px;
+    height:20px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: #920505;
+    font-weight: 600;
+    cursor: pointer; 
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.delete_button:hover {
+    background-color: #920505; 
+    color: #ffffff;
+}
+
+.edit_button{
+    background-color: #ddd;
+    width: 80px;
+    height:20px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: #23455f;
+    font-weight: 600;
+    cursor: pointer; 
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.edit_button:hover {
+    background-color: #23455f; 
+    color: #ffffff;
+}
+
+
+.delete_button_popup {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #920505;
+    color: white;
+    transition: background-color 0.3s;
+}
+.delete_button_popup:hover {
+    background-color: #4f0101;
+}
+
+.tckt{
+    color: #920505;
+}
+.delete-heading{
+    color: #000000;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.delete-info{
+    color: #000000;
+    padding-top: 15px;
+    font-size: 16px;
+    font-weight: 600; 
+}
 .horizontal-line3 {
     margin-top: 0px;
     height: 1px;
@@ -201,6 +301,6 @@ button{
 .pagination-info {
     padding: 10px 0px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     color: gray;
 }

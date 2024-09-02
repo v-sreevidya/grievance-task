@@ -1,16 +1,11 @@
 
-.grievance-main-notification{
+.grievance_main{
     min-height: 100vh;
     min-width: calc(100vw - 300px);
     background-color: #E6EEF5;
 }
 
-.grievance-top-notification{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.top-section-notification{
+.grievance_top{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -54,17 +49,17 @@
     border-radius: 15px;  
 
 }
-.title_bar_notification{
+.title_bar{
     width: 100%;
     border-radius: 15px;
-    padding: 20px 45px 15px 45px;
+    padding: 15px 45px 0px 45px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.title-notification{
+.title{
     font-size: 24px;
     font-weight: 600;
 }
@@ -72,38 +67,6 @@
 
 .horizontal-line {
     margin: 15px 0px;
-    height: 1px;
-    width: 100%;
-    background-color: #D5D5D5; 
-}
-
-.notification-list{
-    font-size: 13px;
-}
-
-.notificationbox{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 25px 56px;
-}
-
-.horizontal-line-notification {
-    margin: 1px 0px;
-    height: 1px;
-    width: 100%;
-    background-color: #D5D5D5; 
-}
-
-.horizontal-line-first{
-    margin: 10px 0px 0px 0px;
-    height: 1px;
-    width: 100%;
-    background-color: #D5D5D5; 
-}
-
-.horizontal-line-last{
-    margin: 1px 0px ;
     height: 1px;
     width: 100%;
     background-color: #D5D5D5; 

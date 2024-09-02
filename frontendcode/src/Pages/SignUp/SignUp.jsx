@@ -42,7 +42,7 @@ function SignUp() {
                         <div>
                             <div className="form-name">
                                 <label className="name-label">Name</label>
-                                <input className="name-input" type="text" id="username" name="username" placeholder="Enter Name" />
+                                <input className="name-input" type="text" id="name" name="name" placeholder="Enter Name" />
                             </div>
 
                             <div className="form-email">
