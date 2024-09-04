@@ -6,7 +6,7 @@ import Inprogress from '../../../Assets/icons/status/inprogress.png';
 import Open from '../../../Assets/icons/status/open.png'
 import Resolved from '../../../Assets/icons/status/resolved.png'
 import Closed from '../../../Assets/icons/status/closed.png'
-import Delete from '../../../Assets/icons/status/delete.png'
+// import Delete from '../../../Assets/icons/status/delete.png'
 import { Link } from 'react-router-dom';
 
 
@@ -35,8 +35,8 @@ const getStatusIcon = (status) => {
       return <img className="status_dot" src={Resolved} alt="Resolved" />;
     case 'CLOSED':
       return <img className="status_dot" src={Closed} alt="Closed" />;
-    case 'DELETE':
-      return <img className="status_dot" src={Delete} alt="Closed" />;
+    // case 'DELETE':
+    //   return <img className="status_dot" src={Delete} alt="Closed" />;
     default:
       return null;
     
