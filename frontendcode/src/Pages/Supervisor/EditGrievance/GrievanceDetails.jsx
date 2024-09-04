@@ -1,7 +1,6 @@
 import React, {useState}  from 'react';
 import './GrievanceDetails.css'
 import { Link } from 'react-router-dom';
-import Download from '../../../Assets/icons/download.png'
 function GrievanceDetails() {
   const [isPopupVisible,setIsPopupVisible]=useState(false);
 
@@ -65,14 +64,6 @@ function GrievanceDetails() {
                 </div>
               </div>
               <div className="row_details">
-                <div className="invoice_details">
-                    <div className='label_invoice'>Invoice</div>
-                    <div className="seperator_invoice">:</div>
-                    <div className="value_invoice">Invoice.pdf</div>
-                    <div className="invoice_download">
-                      <img className='download' src={Download} alt="Download Icon" />
-                    </div>
-                </div>
                 <div className="invoice_date_details">
                   <div className='label_invoice_date'>Invoice Date</div>
                     <div className="seperator_invoice_date">:</div>

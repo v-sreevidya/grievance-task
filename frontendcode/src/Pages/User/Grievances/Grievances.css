@@ -40,8 +40,10 @@
     font-size: 14px;
 }
 
-.list_container{
-    
+.list_container_grievances{
+    position: relative;
+    width: 1100px;
+    height: 520px;
     display: flex;
     flex-direction: column;
     margin: 0px 90px 47px 44px;
@@ -75,6 +77,10 @@ button{
     color: #ffffff;
     font-weight: 600;
     
+}
+
+.title_button:hover{
+    cursor: pointer;
 }
 .horizontal-line {
     margin: 15px 0px;
@@ -175,6 +181,12 @@ button{
 .status_dot{
     width: 8px;
 }
+.bottom_section{
+    
+    position: absolute;
+    width: 1100px;
+    bottom: 0px;
+}
 
 .horizontal-line3 {
     margin-top: 0px;
@@ -188,6 +200,7 @@ button{
     align-items: center;
     justify-content: center;
     padding-right: 40px;
+    
 }
 
 .pagination-button {

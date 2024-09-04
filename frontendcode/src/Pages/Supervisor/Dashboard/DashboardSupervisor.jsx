@@ -6,7 +6,7 @@ import Inprogress from '../../../Assets/icons/status/inprogress.png';
 import Open from '../../../Assets/icons/status/open.png'
 import Resolved from '../../../Assets/icons/status/resolved.png'
 import Closed from '../../../Assets/icons/status/closed.png'
-// import Delete from '../../../Assets/icons/status/delete.png'
+
 import { Link } from 'react-router-dom';
 
 
@@ -14,12 +14,11 @@ const grievances = [
   { ticketNo: '123456', date: '2024-01-15', userid: '552361', assigneeid: '159863', category: '3', status: 'PENDING' },
   { ticketNo: '123457', date: '2024-01-16', userid: '910835', assigneeid: '369875', category: '2', status: 'OPEN' },
   { ticketNo: '123458', date: '2024-01-17', userid: '555883', assigneeid: '128796', category: '1', status: 'INPROGRESS' },
-  { ticketNo: '123459', date: '2024-01-18', userid: '454679', assigneeid: '486259', category: '4', status: 'RESOLVED' },
+  { ticketNo: '123459', date: '2024-01-18', userid: '454679', assigneeid: '486259', category: '4', status: 'CLOSED' },
   { ticketNo: '123460', date: '2024-01-19', userid: '166245', assigneeid: '854137', category: '5', status: 'CLOSED' },
   { ticketNo: '123434', date: '2024-01-15', userid: '166245', assigneeid: '124587', category: '2', status: 'PENDING' },
   { ticketNo: '123469', date: '2024-01-16', userid: '846592', assigneeid: '986574', category: '1', status: 'OPEN' },
-  { ticketNo: '123478', date: '2024-01-17', userid: '714956', assigneeid: '789221', category: '6', status: 'CLOSED' },
- 
+  { ticketNo: '196534', date: '2024-01-15', userid: '166245', assigneeid: '124587', category: '2', status: 'PENDING' },
 ];
 
 
@@ -35,8 +34,6 @@ const getStatusIcon = (status) => {
       return <img className="status_dot" src={Resolved} alt="Resolved" />;
     case 'CLOSED':
       return <img className="status_dot" src={Closed} alt="Closed" />;
-    // case 'DELETE':
-    //   return <img className="status_dot" src={Delete} alt="Closed" />;
     default:
       return null;
     
@@ -47,8 +44,31 @@ const getStatusIcon = (status) => {
 
 function DashboardSupervisor() {
 
-const [hoveredGrievance, setHoveredGrievance] = useState(null);
-const [isPopupVisible,setIsPopupVisible]=useState(false);
+
+  const [sortedGrievances, setSortedGrievances] = useState(grievances);
+  const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
+  const [hoveredGrievance, setHoveredGrievance] = useState(null);
+  const [isPopupVisible,setIsPopupVisible]=useState(false);
+
+  const sortGrievances = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+
+    const sortedArray = [...sortedGrievances].sort((a, b) => {
+      if (a[key] < b[key]) {
+        return direction === 'ascending' ? -1 : 1;
+      }
+      if (a[key] > b[key]) {
+        return direction === 'ascending' ? 1 : -1;
+      }
+      return 0;
+    });
+
+    setSortedGrievances(sortedArray);
+    setSortConfig({ key, direction });
+  };
 
 
 
@@ -97,7 +117,7 @@ const handleEdit = (ticketNo) => {
 
       </div>
       
-      <div className='list_container'>
+      <div className='list_container_supervisor'>
         <div className="title_bar">
           <div className='title'>Grievances</div>
         </div>
@@ -105,41 +125,41 @@ const handleEdit = (ticketNo) => {
         <div>
             <tr className="menu_bar">
               <div>
-                <th className="ticket_no_supervisor">
+                <th className="ticket_no_supervisor" onClick={() => sortGrievances('ticketNo')}>
                   TICKET NO 
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
               </div>
               <div>
-                <th className="date_supervisor">
+                <th className="date_supervisor" onClick={() => sortGrievances('date')}>
                   DATE 
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
               </div>
 
               <div>
-                <th className="user_id_supervisor">
+                <th className="user_id_supervisor" onClick={() => sortGrievances('userid')}>
                   USER ID
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
               </div>
 
               <div>
-                <th className="assignee_id_supervisor">
+                <th className="assignee_id_supervisor" onClick={() => sortGrievances('assigneeid')}>
                   ASSIGNEE ID
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
               </div>
 
               <div>
-                <th className="category_supervisor">
+                <th className="category_supervisor" onClick={() => sortGrievances('category')}>
                   CATEGORY
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
               </div>
 
               <div>
-                <th className="status_supervisor">
+                <th className="status_supervisor" onClick={() => sortGrievances('status')}>
                   STATUS 
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
@@ -157,7 +177,7 @@ const handleEdit = (ticketNo) => {
                 
 
                   <tbody className="list">
-                    {grievances.map((grievance, ticketNo) => (
+                    {sortedGrievances.map((grievance, ticketNo) => (
                       <tr className='list_row' key={ticketNo}
                       onMouseEnter={() => handleMouseEnter(grievance.ticketNo)}
                       onMouseLeave={handleMouseLeave}
@@ -221,6 +241,7 @@ const handleEdit = (ticketNo) => {
 
 
         </table> 
+        <div className='bottom_section'>
         <div class="horizontal-line3" ></div>
         <div className="pagination">
           <button 
@@ -232,6 +253,7 @@ const handleEdit = (ticketNo) => {
             className="pagination-button">
             &gt;
           </button>
+        </div>
         </div>
       </div>
       

@@ -40,13 +40,16 @@
     font-size: 14px;
 }
 
-.list_container{
-    
+.list_container_supervisor{
+    position: relative;
+    width: 1100px;
+    height: 517px;
     display: flex;
     flex-direction: column;
     margin: 0px 90px 47px 44px;
     background-color: #ffffff;
     border-radius: 15px;  
+
 
 }
 .title_bar{
@@ -282,8 +285,14 @@
     width: 100%;
     background-color: #D5D5D5; 
 }
-
+.bottom_section{
+    
+    position: absolute;
+    width: 1100px;
+    bottom: 0px;
+}
 .pagination {
+    
     display: flex;
     align-items: center;
     justify-content: center;

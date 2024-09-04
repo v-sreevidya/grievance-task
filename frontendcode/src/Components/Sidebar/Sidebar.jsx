@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import Logo_dashboard from '../../Assets/logo_Dashboard.png';
 import Icon_grievance_inactive from '../../Assets/icons/Grievances_inactive.png';
-// import Icon_details_inactive from '../../Assets/icons/details_inactive.png';
 import Icon_notification_inactive from '../../Assets/icons/Notification_inactive.png';
 
 export class Sidebar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      activeMenu: 'grievances', // Tracks which menu is active
+      activeMenu: 'grievances',
     };
   }
 
-  // Handler to set the active menu item
+
   handleMenuClick = (menu) => {
     this.setState({ activeMenu: menu });
   };
@@ -47,13 +46,7 @@ export class Sidebar extends PureComponent {
                   <div>Notification</div>
               
                 </Link>
-              {/* <Link to="/details"
-                className={`details ${activeMenu === 'details' ? 'active' : ''}`}
-                onClick={() => this.handleMenuClick('details')}
-              >
-                <img className='icon_details_inactive' src={Icon_details_inactive} alt="details_inactive" />
-                <div>Details</div>
-              </Link> */}
+           
             </div>
 
             <div className='bottom'>

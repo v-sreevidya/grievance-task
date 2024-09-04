@@ -92,7 +92,7 @@
 
 
 .label_name{
-    margin-right: 40px;
+    margin-right: 54px;
 }
 
 .seperator_name{
@@ -136,7 +136,7 @@
 
 
 .label_address{
-    margin-right: 24px;
+    margin-right: 38px;
 }
 
 .seperator_address{
@@ -176,7 +176,7 @@
 
 
 .label_reason{
-    margin-right: 28px;
+    margin-right: 43px;
 }
 
 .seperator_reason{
@@ -210,38 +210,9 @@
     width: 300px;
 }
 
-.invoice_details{
-    width: 300px;
-    display: flex;
-    flex-direction: row;
-    text-align: left;
-}
-
-.label_invoice{
-    margin-right: 28px;
-}
-
-.seperator_invoice{
-    margin-right: 50px;
-    
-}
-
-.value_invoice{
-    font-weight: 600;
-}
-
-.download{
-    width: 20px;
-    margin-left: 12px;
-
-}
-
-.download:hover{
-    cursor: pointer;
-}
 
 .invoice_date_details{
-    width: 400px;
+    width: 300px;
     display: flex;
     flex-direction: row;
     text-align: left;
@@ -249,7 +220,7 @@
 
 
 .label_invoice_date{
-    margin-right: 46px;
+    margin-right: 10px;
 }
 
 .seperator_invoice_date{

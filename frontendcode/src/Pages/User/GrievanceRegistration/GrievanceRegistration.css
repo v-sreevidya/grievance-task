@@ -12,7 +12,7 @@
 .registration-name{
     display: flex;
     flex-direction: column;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     padding-right: 33px;
 }
   
@@ -33,7 +33,7 @@
 .registration-email{
     display: flex;
     flex-direction: column;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 
 }
   
@@ -55,7 +55,7 @@
 .registration-address{
     display: flex;
     flex-direction: column;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     padding-right: 33px;
 }
   
@@ -76,7 +76,7 @@
 .registration-phoneNo{
     display: flex;
     flex-direction: column;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 }
   
 .registration-phoneNo-label{
@@ -96,7 +96,7 @@
 .registration-reason{
     display: flex;
     flex-direction: column;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     padding-right: 33px;
 }
   
@@ -116,7 +116,7 @@
 .registration-description{
     display: flex;
     flex-direction: column;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 }
   
 .registration-description-label{

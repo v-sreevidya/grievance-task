@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './Grievances.css';
 import Arrowdown from '../../../Assets/icons/Arrow drop down.png';
 import Pending from '../../../Assets/icons/status/pending.png';
@@ -10,15 +10,14 @@ import { Link } from 'react-router-dom';
 
 
 const grievances = [
-  { ticketNo: '123456', date: '2024-01-15', status: 'PENDING' },
-  { ticketNo: '123457', date: '2024-01-16', status: 'OPEN' },
-  { ticketNo: '123458', date: '2024-01-17', status: 'INPROGRESS' },
-  { ticketNo: '123459', date: '2024-01-18', status: 'RESOLVED' },
-  { ticketNo: '123460', date: '2024-01-19', status: 'CLOSED' },
-  { ticketNo: '123456', date: '2024-01-15', status: 'PENDING' },
-  { ticketNo: '123457', date: '2024-01-16', status: 'OPEN' },
-  { ticketNo: '123458', date: '2024-01-17', status: 'INPROGRESS' },
- 
+  // { ticketNo: '123456', date: '2024-01-15', status: 'PENDING' },
+  // { ticketNo: '123457', date: '2024-01-16', status: 'OPEN' },
+  // { ticketNo: '123458', date: '2024-01-17', status: 'INPROGRESS' },
+  // { ticketNo: '123459', date: '2024-01-18', status: 'RESOLVED' },
+  // { ticketNo: '123460', date: '2024-01-19', status: 'CLOSED' },
+  // { ticketNo: '123556', date: '2024-01-15', status: 'PENDING' },
+  // { ticketNo: '128657', date: '2024-01-16', status: 'OPEN' },
+  // { ticketNo: '823458', date: '2024-01-17', status: 'INPROGRESS' },
 ];
 
 
@@ -46,6 +45,35 @@ const getStatusIcon = (status) => {
 
 
 function Grievances() {
+
+
+  const [sortedGrievances, setSortedGrievances] = useState(grievances);
+  const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
+
+  const sortGrievances = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+
+    const sortedArray = [...sortedGrievances].sort((a, b) => {
+      if (a[key] < b[key]) {
+        return direction === 'ascending' ? -1 : 1;
+      }
+      if (a[key] > b[key]) {
+        return direction === 'ascending' ? 1 : -1;
+      }
+      return 0;
+    });
+
+    setSortedGrievances(sortedArray);
+    setSortConfig({ key, direction });
+  };
+
+
+
+
+
   return (
     <div className='grievance_main'>
       <div className="grievance_top">
@@ -65,10 +93,10 @@ function Grievances() {
 
       </div>
       
-      <div className='list_container'>
+      <div className='list_container_grievances'>
         <div className="title_bar">
           <div className='title'>Grievances</div>
-          <Link to ="/GrievanceRegistration" className='title_button'>
+          <Link to ="/GrievanceRegistration" >
             <button>ADD</button>
           </Link>
         </div>
@@ -76,19 +104,19 @@ function Grievances() {
         <div>
             <tr className="menu_bar">
               <div>
-                <th className="ticket_no">
+              <th className="ticket_no" onClick={() => sortGrievances('ticketNo')}>
                   TICKET NO 
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
               </div>
               <div>
-                <th className="date">
+                <th className="date" onClick={() => sortGrievances('date')}>
                   DATE 
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
               </div>
               <div>
-                <th className="status">
+              <th className="status" onClick={() => sortGrievances('status')}>
                   STATUS 
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
@@ -106,7 +134,7 @@ function Grievances() {
                 
 
                   <tbody className="list">
-                    {grievances.map((grievance, ticketNo) => (
+                    {sortedGrievances.map((grievance, ticketNo) => (
                       <tr className='list_row' key={ticketNo}>
                         <div><td className='list_data_ticketNo'>{grievance.ticketNo}</td></div>
                         <div><td className='list_data_date'>{grievance.date}</td></div>
@@ -126,17 +154,19 @@ function Grievances() {
 
 
         </table> 
+        <div className='bottom_section'>
         <div class="horizontal-line3" ></div>
         <div className="pagination">
           <button 
             className="pagination-button">
             &lt;
           </button>
-          <span className="pagination-info">1 / 2</span>
+          <span className="pagination-info">1</span>
           <button 
             className="pagination-button">
             &gt;
           </button>
+        </div>
         </div>
       </div>
       
