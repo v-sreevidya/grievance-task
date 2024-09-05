@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
     public class GrievanceDTO {
 
-        private int id;
+        private int ticket_no;
         private String name;
         private String email;
         private String reason;
@@ -21,11 +21,11 @@ import java.time.LocalDateTime;
         // Getters and Setters
 
         public int getId() {
-            return id;
+            return ticket_no;
         }
 
-        public void setId(int id) {
-            this.id = id;
+        public void setId(int ticket_no) {
+            this.ticket_no = ticket_no;
         }
 
         public String getName() {
