@@ -11,7 +11,7 @@ public class Grievance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int ticket_no;
 
 
 
