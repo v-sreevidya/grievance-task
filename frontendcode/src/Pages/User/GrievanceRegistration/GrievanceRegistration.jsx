@@ -62,12 +62,12 @@ function GrievanceRegistration() {
                         <div className="registration-reason">
                             <label className="registration-reason-label" htmlFor="reason">Return Reason</label>
                                 <select className='registration-reason-input' defaultValue="0">
-                                    <option value="0">Select Reason </option>
-                                    <option value="Damaged product">Damaged product </option>
-                                    <option value="Shipping delay">Shipping delay </option>
-                                    <option value="Exchange/Refund issue">Exchange/Refund issue</option>
-                                    <option value="Quality">Quality </option>
-                                    <option value="Wrong Product">Wrong Product (includes colour and size)</option>
+                                    <option value="0" disabled hidden>Select Reason </option>
+                                    <option value="Damaged product">1. Damaged product </option>
+                                    <option value="Shipping delay">2. Shipping delay </option>
+                                    <option value="Exchange/Refund issue">3. Exchange/Refund issue</option>
+                                    <option value="Quality">. Quality </option>
+                                    <option value="Wrong Product">5. Wrong Product (includes colour and size)</option>
                             </select>
                         </div>
                         <div className="registration-description">
