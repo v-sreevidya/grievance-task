@@ -31,13 +31,13 @@ public class GrievanceService {
     }
 
     // Retrieve a grievance by its ID
-    public Optional<Grievance> getGrievanceById(int id) {
-        return repository.findById(id);
+    public Optional<Grievance> getGrievanceById(int ticket_no) {
+        return repository.findById(ticket_no);
     }
 
     // Update an existing grievance
-    public Grievance updateGrievance(int id, Grievance grievanceDetails) {
-        Grievance grievance = repository.findById(id)
+    public Grievance updateGrievance(int ticket_no, Grievance grievanceDetails) {
+        Grievance grievance = repository.findById(ticket_no)
                 .orElseThrow(() -> new RuntimeException("Grievance not found"));
 
         grievance.setName(grievanceDetails.getName());
@@ -59,8 +59,8 @@ public class GrievanceService {
     }
 
     // Delete a grievance by its ID
-    public void deleteGrievance(int id) {
-        repository.deleteById(id);
+    public void deleteGrievance(int ticket_no) {
+        repository.deleteById(ticket_no);
     }
 
     // Helper method to validate grievance status
