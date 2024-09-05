@@ -33,8 +33,8 @@ public class GrievanceController {
     }
 
     @GetMapping("/{ticket_no}")
-    public ResponseEntity<GrievanceDTO> getGrievanceById(@PathVariable int ticket_no) {
-        Optional<Grievance> grievance = grievanceService.getGrievanceById(ticket_no);
+    public ResponseEntity<GrievanceDTO> getGrievanceByTicketNo(@PathVariable int ticket_no) {
+        Optional<Grievance> grievance = grievanceService.getGrievanceByTicketNo(ticket_no);
         return grievance.map(g -> ResponseEntity.ok(convertToDTO(g)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -57,12 +57,11 @@ public class GrievanceController {
 
     private Grievance convertToEntity(GrievanceDTO grievanceDTO) {
         Grievance grievance = new Grievance();
-        grievance.setId(grievanceDTO.getId());
+        grievance.setTicketNo(grievanceDTO.getTicketNo());
         grievance.setName(grievanceDTO.getName());
         grievance.setEmail(grievanceDTO.getEmail());
         grievance.setReason(grievanceDTO.getReason());
         grievance.setDescription(grievanceDTO.getDescription());
-        
         grievance.setStatus(grievanceDTO.getStatus());
         grievance.setCreatedAt(grievanceDTO.getCreatedAt());
         grievance.setUpdatedAt(grievanceDTO.getUpdatedAt());
@@ -71,12 +70,11 @@ public class GrievanceController {
 
     private GrievanceDTO convertToDTO(Grievance grievance) {
         GrievanceDTO grievanceDTO = new GrievanceDTO();
-        grievanceDTO.setId(grievance.getId());
+        grievanceDTO.setTicketNo(grievance.getTicketNo());
         grievanceDTO.setName(grievance.getName());
         grievanceDTO.setEmail(grievance.getEmail());
         grievanceDTO.setReason(grievance.getReason());
         grievanceDTO.setDescription(grievance.getDescription());
-
         grievanceDTO.setStatus(grievance.getStatus());
         grievanceDTO.setCreatedAt(grievance.getCreatedAt());
         grievanceDTO.setUpdatedAt(grievance.getUpdatedAt());
