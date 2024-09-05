@@ -1,10 +1,11 @@
 package com.example.grievance.Service;
 
 import com.example.grievance.Entity.Grievance;
-import com.example.grievance.Repository.GrievanceRepository;
+import com.example.grievance.repository.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,42 +13,64 @@ import java.util.Optional;
 public class GrievanceService {
 
     @Autowired
-    private GrievanceRepository grievanceRepository;
+    private repository repository;
 
-    // Create a new grievance
+    // Create a new grievance with a specific status
     public Grievance createGrievance(Grievance grievance) {
-        return grievanceRepository.save(grievance);
+        grievance.setCreatedAt(LocalDateTime.now());
+        grievance.setUpdatedAt(LocalDateTime.now());
+        if (grievance.getStatus() == null || grievance.getStatus().isEmpty()) {
+            grievance.setStatus("Pending"); // Default status if not provided
+        }
+        return repository.save(grievance);
     }
 
     // Retrieve all grievances
     public List<Grievance> getAllGrievances() {
-        return grievanceRepository.findAll();
+        return repository.findAll();
     }
 
-    // Retrieve grievance by ticket_no
-    public Optional<Grievance> getGrievanceByTicketNo(String ticketNo) {
-        return grievanceRepository.findByTicketNo(ticketNo);
+    // Retrieve a grievance by its ID
+    public Optional<Grievance> getGrievanceById(int id) {
+        return repository.findById(id);
     }
 
     // Update an existing grievance
-    public Grievance updateGrievance(String ticketNo, Grievance grievanceDetails) {
-        Optional<Grievance> grievanceOptional = grievanceRepository.findByTicketNo(ticketNo);
-        if (grievanceOptional.isPresent()) {
-            Grievance grievance = grievanceOptional.get();
-            grievance.setName(grievanceDetails.getName());
-            grievance.setEmail(grievanceDetails.getEmail());
-            grievance.setReason(grievanceDetails.getReason());
-            grievance.setDescription(grievanceDetails.getDescription());
-            grievance.setStatus(grievanceDetails.getStatus());
-            grievance.setUpdatedAt(grievanceDetails.getUpdatedAt());
-            return grievanceRepository.save(grievance);
+    public Grievance updateGrievance(int id, Grievance grievanceDetails) {
+        Grievance grievance = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Grievance not found"));
+
+        grievance.setName(grievanceDetails.getName());
+        grievance.setEmail(grievanceDetails.getEmail());
+        grievance.setReason(grievanceDetails.getReason());
+
+        grievance.setDescription(grievanceDetails.getDescription());
+
+        // Update the status only if it's one of the allowed statuses
+        String status = grievanceDetails.getStatus();
+        if (isValidStatus(status)) {
+            grievance.setStatus(status);
+        } else {
+            throw new IllegalArgumentException("Invalid status: " + status);
         }
-        throw new RuntimeException("Grievance with ticket_no: " + ticketNo + " not found");
+
+        grievance.setUpdatedAt(LocalDateTime.now());
+        return repository.save(grievance);
     }
 
-    // Delete grievance by ticket_no
-    public void deleteGrievance(String ticketNo) {
-        Optional<Grievance> grievanceOptional = grievanceRepository.findByTicketNo(ticketNo);
-        grievanceOptional.ifPresent(grievanceRepository::delete);
+    // Delete a grievance by its ID
+    public void deleteGrievance(int id) {
+        repository.deleteById(id);
+    }
+
+    // Helper method to validate grievance status
+    private boolean isValidStatus(String status) {
+        return status.equals("Closed") || 
+               status.equals("Resolved") || 
+               status.equals("Pending") || 
+               status.equals("Open") || 
+               status.equals("InProgress");
     }
 }
+
+
