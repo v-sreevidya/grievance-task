@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './GrievanceRegistration.css';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7b98f609e3485bb4dab94c06c62df791cfab03a0
 import Logo from '../../../Assets/logo_Dashboard.png';
 
 function GrievanceRegistration() {
@@ -56,6 +60,20 @@ function GrievanceRegistration() {
         setIsPopupVisible(false);
     };
 
+<<<<<<< HEAD
+=======
+    // const handleFileChange = (event) => {
+    //     const fileInput = event.target;
+    //     const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file chosen';
+    //     fileInput.setAttribute('data-file-name', fileName);
+
+    //     setFormData({
+    //         ...formData,
+    //         invoice: event.target.files[0] // Store the file in formData
+    //     });
+    // };
+
+>>>>>>> 7b98f609e3485bb4dab94c06c62df791cfab03a0
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData({
@@ -103,6 +121,7 @@ function GrievanceRegistration() {
                                 </div>
                             </div>
                             <div className='registration-form-row'>
+<<<<<<< HEAD
                                 <div className="registration-reason">
                                     <label className="registration-reason-label" htmlFor="reason">Return Reason</label>
                                     <select
@@ -119,6 +138,18 @@ function GrievanceRegistration() {
                                         <option value="Quality">4. Quality</option>
                                         <option value="Wrong Product">5. Wrong Product (includes colour and size)</option>
                                     </select>
+=======
+                        <div className="registration-reason">
+                            <label className="registration-reason-label" htmlFor="reason">Return Reason</label>
+                                <select className='registration-reason-input' defaultValue="0">
+                                    <option value="0" disabled hidden>Select Reason </option>
+                                    <option value="Damaged product">1. Damaged product </option>
+                                    <option value="Shipping delay">2. Shipping delay </option>
+                                    <option value="Exchange/Refund issue">3. Exchange/Refund issue</option>
+                                    <option value="Quality">4. Quality </option>
+                                    <option value="Wrong Product">5. Wrong Product (includes colour and size)</option>
+                            </select>
+>>>>>>> 7b98f609e3485bb4dab94c06c62df791cfab03a0
                                 </div>
                                 <div className="registration-description">
                                     <label className="registration-description-label">Problem Description</label>
@@ -126,6 +157,10 @@ function GrievanceRegistration() {
                                 </div>
                             </div>
                             <div className='registration-form-row'>
+<<<<<<< HEAD
+=======
+                               
+>>>>>>> 7b98f609e3485bb4dab94c06c62df791cfab03a0
                                 <div className="registration-invoiceDate">
                                     <label className="registration-invoiceDate-label">Invoice Date</label>
                                     <div className="calender-input">
