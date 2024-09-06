@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './GrievanceRegistration.css';
-
 import Logo from '../../../Assets/logo_Dashboard.png';
 
 function GrievanceRegistration() {
@@ -32,7 +31,7 @@ function GrievanceRegistration() {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/v1/grievance/add', {
+            const response = await fetch('http://localhost:8080/api/v1/grievances/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,17 +55,6 @@ function GrievanceRegistration() {
     const closePopup = () => {
         setIsPopupVisible(false);
     };
-
-    // const handleFileChange = (event) => {
-    //     const fileInput = event.target;
-    //     const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file chosen';
-    //     fileInput.setAttribute('data-file-name', fileName);
-
-    //     setFormData({
-    //         ...formData,
-    //         invoice: event.target.files[0] // Store the file in formData
-    //     });
-    // };
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -115,16 +103,22 @@ function GrievanceRegistration() {
                                 </div>
                             </div>
                             <div className='registration-form-row'>
-                        <div className="registration-reason">
-                            <label className="registration-reason-label" htmlFor="reason">Return Reason</label>
-                                <select className='registration-reason-input' defaultValue="0">
-                                    <option value="0" disabled hidden>Select Reason </option>
-                                    <option value="Damaged product">1. Damaged product </option>
-                                    <option value="Shipping delay">2. Shipping delay </option>
-                                    <option value="Exchange/Refund issue">3. Exchange/Refund issue</option>
-                                    <option value="Quality">4. Quality </option>
-                                    <option value="Wrong Product">5. Wrong Product (includes colour and size)</option>
-                            </select>
+                                <div className="registration-reason">
+                                    <label className="registration-reason-label" htmlFor="reason">Return Reason</label>
+                                    <select
+                                        className='registration-reason-input'
+                                        id="reason"
+                                        name="reason"
+                                        value={formData.reason}
+                                        onChange={handleInputChange}
+                                    >
+                                        <option value="" disabled hidden>Select Reason</option>
+                                        <option value="Damaged product">1. Damaged product</option>
+                                        <option value="Shipping delay">2. Shipping delay</option>
+                                        <option value="Exchange/Refund issue">3. Exchange/Refund issue</option>
+                                        <option value="Quality">4. Quality</option>
+                                        <option value="Wrong Product">5. Wrong Product (includes colour and size)</option>
+                                    </select>
                                 </div>
                                 <div className="registration-description">
                                     <label className="registration-description-label">Problem Description</label>
@@ -132,7 +126,6 @@ function GrievanceRegistration() {
                                 </div>
                             </div>
                             <div className='registration-form-row'>
-                               
                                 <div className="registration-invoiceDate">
                                     <label className="registration-invoiceDate-label">Invoice Date</label>
                                     <div className="calender-input">
