@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './GrievanceRegistration.css';
-import File from '../../../Assets/icons/File.png';
+
 import Logo from '../../../Assets/logo_Dashboard.png';
 
 function GrievanceRegistration() {
@@ -58,16 +58,16 @@ function GrievanceRegistration() {
         setIsPopupVisible(false);
     };
 
-    const handleFileChange = (event) => {
-        const fileInput = event.target;
-        const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file chosen';
-        fileInput.setAttribute('data-file-name', fileName);
+    // const handleFileChange = (event) => {
+    //     const fileInput = event.target;
+    //     const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file chosen';
+    //     fileInput.setAttribute('data-file-name', fileName);
 
-        setFormData({
-            ...formData,
-            invoice: event.target.files[0] // Store the file in formData
-        });
-    };
+    //     setFormData({
+    //         ...formData,
+    //         invoice: event.target.files[0] // Store the file in formData
+    //     });
+    // };
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -116,17 +116,16 @@ function GrievanceRegistration() {
                                 </div>
                             </div>
                             <div className='registration-form-row'>
-                                <div className="registration-reason">
-                                    <label className="registration-reason-label" htmlFor="reason">Return Reason</label>
-                                    <select className='registration-reason-input' name="reason" value={formData.reason} onChange={handleInputChange}>
-                                        <option value="1">Select Reason</option>
-                                        <option value="2">Damaged product</option>
-                                        <option value="3">Shipping delay</option>
-                                        <option value="4">Exchange/refund issue</option>
-                                        <option value="5">Quality</option>
-                                        <option value="6">Wrong Product (includes colour and size)</option>
-                                        <option value="7">Availability Issues</option>
-                                    </select>
+                        <div className="registration-reason">
+                            <label className="registration-reason-label" htmlFor="reason">Return Reason</label>
+                                <select className='registration-reason-input' defaultValue="0">
+                                    <option value="0" disabled hidden>Select Reason </option>
+                                    <option value="Damaged product">1. Damaged product </option>
+                                    <option value="Shipping delay">2. Shipping delay </option>
+                                    <option value="Exchange/Refund issue">3. Exchange/Refund issue</option>
+                                    <option value="Quality">4. Quality </option>
+                                    <option value="Wrong Product">5. Wrong Product (includes colour and size)</option>
+                            </select>
                                 </div>
                                 <div className="registration-description">
                                     <label className="registration-description-label">Problem Description</label>
@@ -134,19 +133,7 @@ function GrievanceRegistration() {
                                 </div>
                             </div>
                             <div className='registration-form-row'>
-                                <div className="registration-invoice">
-                                    <label className="registration-invoice-label" htmlFor="invoice">Invoice / Bill</label>
-                                    <div className="file-input">
-                                        <input 
-                                            className="registration-invoice-input" 
-                                            type="file" 
-                                            id="invoice" 
-                                            name="invoice"
-                                            onChange={handleFileChange} 
-                                        />
-                                        <img className="file-choose" src={File} alt="File" />
-                                    </div>
-                                </div>
+                               
                                 <div className="registration-invoiceDate">
                                     <label className="registration-invoiceDate-label">Invoice Date</label>
                                     <div className="calender-input">
