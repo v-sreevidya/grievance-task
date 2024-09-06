@@ -1,5 +1,6 @@
 package com.example.grievance.DTO;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class GrievanceDTO {
@@ -11,7 +12,7 @@ public class GrievanceDTO {
     private String reason;
     private String description;
     private String status;
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
     private LocalDateTime updatedAt;
 
     // Getters and Setters
@@ -72,11 +73,11 @@ public class GrievanceDTO {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 

@@ -10,24 +10,24 @@ function GrievanceRegistration() {
         email: "",
         address: "",
         phoneNumber: "",
-        reason: "", // Updated to store reason directly
+        reason: "", 
         description: "",
         invoice: null,
         invoiceDate: ""
     });
 
     const handleClick = async () => {
-        // Generate a random ticket number
+        
         const randomTicketNumber = `TICKET-${Math.floor(Math.random() * 1000000)}`;
 
-        // Prepare the form data to send to the backend
+        
         const dataToSend = {
             name: formData.username,
             email: formData.email,
-            reason: formData.reason, // Sending the selected reason string
+            reason: formData.reason, 
             description: formData.description,
             invoiceDate: formData.invoiceDate,
-            ticketNumber: randomTicketNumber // Send the generated ticket number to the backend
+            ticketNumber: randomTicketNumber 
         };
 
         try {
@@ -41,11 +41,11 @@ function GrievanceRegistration() {
 
             if (response.ok) {
                 const result = await response.json();
-                console.log(result); // Handle success
-                setTicketNumber(randomTicketNumber); // Set the generated ticket number
-                setIsPopupVisible(true); // Show the popup after success
+                console.log(result); 
+                setTicketNumber(randomTicketNumber); 
+                setIsPopupVisible(true); 
             } else {
-                console.error('Failed to submit grievance'); // Handle errors
+                console.error('Failed to submit grievance'); 
             }
         } catch (error) {
             console.error('Error:', error);

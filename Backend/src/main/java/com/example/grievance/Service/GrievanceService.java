@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;  // Import for generating unique ticketNumber
@@ -24,12 +25,12 @@ public class GrievanceService {
     // Create a new grievance with a specific status and ticket number
     public Grievance createGrievance(Grievance grievance) {
         System.out.println("Creating grievance: " + grievance);
-        grievance.setCreatedAt(LocalDateTime.now());
+        grievance.setCreatedAt(LocalDate.now());
         grievance.setUpdatedAt(LocalDateTime.now());
 
 
         if (grievance.getStatus() == null || grievance.getStatus().isEmpty()) {
-            grievance.setStatus("Pending");
+            grievance.setStatus("PENDING");
         }
 
 
@@ -79,11 +80,11 @@ public class GrievanceService {
 
 
     private boolean isValidStatus(String status) {
-        return status.equals("Closed") ||
-                status.equals("Resolved") ||
-                status.equals("Pending") ||
-                status.equals("Open") ||
-                status.equals("InProgress");
+        return status.equals("CLOSED") ||
+                status.equals("RESOLVED") ||
+                status.equals("PENDING") ||
+                status.equals("OPEN") ||
+                status.equals("INPROGRESS");
     }
 
 
