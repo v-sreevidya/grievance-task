@@ -1,0 +1,319 @@
+
+.grievance_main{
+    min-height: 100vh;
+    min-width: calc(100vw - 300px);
+    background-color: #E6EEF5;
+}
+
+.grievance_top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.welcome_note{
+    padding: 30px 0px 30px 44px;
+}
+.note1{
+    font-size: 16px;
+    font-weight: 600;
+    color: #A1A7AC;
+}
+
+.note2{
+    font-size: 28px;
+    font-weight: 600;
+    color: #23455F;
+}
+.form-search{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    
+}
+.search-input{
+    margin-top: 37px;
+    margin-right: 90px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.list_container_assignee{
+    position: relative;
+    width: 1100px;
+    height: 517px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 90px 47px 44px;
+    background-color: #ffffff;
+    border-radius: 15px;  
+
+
+}
+.title_bar{
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px 45px 0px 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.horizontal-line {
+    margin: 15px 0px;
+    height: 1px;
+    width: 100%;
+    background-color: #D5D5D5; 
+}
+.menu_bar{
+    font-size: 15px;
+    color: #999999;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.arrow_down:hover{
+cursor: pointer;
+}
+
+.ticket_no_assignee{
+    padding-left: 65px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.arrow_down{
+    width: 24px;
+    height: 24px;
+}
+.date_assignee{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 25px;
+}
+
+.user_id_assignee{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 50px;
+}
+
+.assignee_id_assignee{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 20px; 
+}
+
+.category_assignee{
+    display: flex;
+    align-items: center;
+    flex-direction: row;   
+}
+
+
+.status_assignee{
+    padding-right: 90px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+
+.horizontal-line2 {
+    margin-top: 15px;
+    height: 1px;
+    width: 100%;
+    background-color: #D5D5D5; 
+}
+
+
+.grievance-table{
+    font-size: 15px;
+    font-weight: 600;
+    color: #7D7D7D;
+    padding: 0px 65px 0px 65px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list{
+    padding:  10px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: left; 
+}
+
+.list_row{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: background-color 0.3s;
+}
+
+.list_row:hover{
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+
+.list_data_ticketNo_assignee{
+    
+    text-align: left; 
+    padding: 10px;
+}
+.list_data_date_assignee{
+    text-align: center; 
+    padding: 10px;
+    
+}
+.list_data_userid_assignee{
+    text-align: center; 
+    padding: 10px;
+}
+
+.list_data_assigneeid_assignee{
+    text-align: center;
+    padding: 10px; 
+    
+}
+.list_data_category_assignee{
+    text-align: center; 
+    padding: 10px;
+}
+.list_data_status_assignee{
+    width: 120px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.list_data_status_icon{
+    padding-right: 5px;
+}
+.status_dot{
+    width: 8px;
+}
+
+.delete_button{
+    background-color: #ddd;
+    width: 80px;
+    height:20px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: #920505;
+    font-weight: 600;
+    cursor: pointer; 
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.delete_button:hover {
+    background-color: #920505; 
+    color: #ffffff;
+}
+
+.edit_button_assignee{
+    background-color: #ddd;
+    width: 100px;
+    height:20px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: #de911d;
+    font-weight: 600;
+    cursor: pointer; 
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.edit_button_assignee:hover {
+    background-color: #ffa92a; 
+    color: #ffffff;
+}
+
+
+.delete_button_popup {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #920505;
+    color: white;
+    transition: background-color 0.3s;
+}
+.delete_button_popup:hover {
+    background-color: #4f0101;
+}
+
+.tckt{
+    color: #920505;
+}
+.delete-heading{
+    color: #000000;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.delete-info{
+    color: #000000;
+    padding-top: 15px;
+    font-size: 16px;
+    font-weight: 600; 
+}
+.horizontal-line3 {
+    margin-top: 0px;
+    height: 1px;
+    width: 100%;
+    background-color: #D5D5D5; 
+}
+.bottom_section{
+    
+    position: absolute;
+    width: 1100px;
+    bottom: 0px;
+}
+.pagination {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 40px;
+}
+
+.pagination-button {
+    background: none;
+    border: none;
+    color: gray;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.pagination-info {
+    padding: 10px 0px;
+    font-weight: 600;
+    font-size: 13px;
+    color: gray;
+}
