@@ -1,0 +1,302 @@
+
+.grievance_main{
+    min-height: 100vh;
+    min-width: calc(100vw - 300px);
+    background-color: #E6EEF5;
+}
+
+.grievance_topsection{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.welcome_note{
+    padding: 30px 0px 30px 44px;
+}
+.note1{
+    font-size: 16px;
+    font-weight: 600;
+    color: #A1A7AC;
+}
+
+.note2{
+    font-size: 28px;
+    font-weight: 600;
+    color: #23455F;
+}
+.form-search{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    
+}
+.search-input{
+    margin-top: 37px;
+    margin-right: 90px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.list_container{
+    
+    display: flex;
+    flex-direction: column;
+    margin: 0px 90px 47px 44px;
+    background-color: #ffffff;
+    border-radius: 15px;  
+
+}
+.title_bar{
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px 45px 0px 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.horizontal-line {
+    margin: 10px 0px;
+    height: 1px;
+    width: 100%;
+    background-color: #D5D5D5; 
+}
+
+.rows_details{
+    display: flex;
+    flex-direction: column;
+}
+
+.row_details{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between ;
+    padding: 18px 65px 18px 65px;
+}
+
+.name_details{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.label_name{
+    margin-right: 54px;
+}
+
+.seperator_name{
+    margin-right: 50px;
+    
+}
+
+.value_name{
+    font-weight: 600;
+}
+
+
+.email_details{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    
+}
+
+
+.label_email{
+    margin-right: 92px;
+}
+
+.seperator_email{
+    margin-right: 50px;
+    
+}
+
+.value_email{
+    font-weight: 600;
+}
+
+
+.address_details{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.label_address{
+    margin-right: 38px;
+}
+
+.seperator_address{
+    margin-right: 50px;
+    
+}
+
+.value_address{
+    font-size: 16px;
+    font-weight: 500;
+    width: 300px;
+}
+
+.phone_no_details{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+
+.label_phone_no{
+    margin-right: 28px;
+}
+
+.seperator_phone_no{
+    margin-right: 50px;
+    
+}
+
+.value_phone_no{
+    font-weight: 600;
+}
+
+.reason_details{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.label_reason{
+    margin-right: 43px;
+}
+
+.seperator_reason{
+    margin-right: 50px;
+    
+}
+
+.value_reason{
+    font-weight: 600;
+}
+
+.description_details{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+}
+
+.label_description{
+    margin-right: 50px;
+}
+
+.seperator_description{
+    margin-right: 50px;
+    
+}
+
+.value_description{
+    font-size: 16px;
+    font-weight: 500;
+    width: 300px;
+}
+
+
+.invoice_date_details{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+
+
+.label_invoice_date{
+    margin-right: 10px;
+}
+
+.seperator_invoice_date{
+    margin-right: 50px;
+    
+}
+
+.value_invoice_date{
+    font-weight: 600;
+}
+
+.status_update{
+    display: flex;
+    flex-direction: column;
+}
+
+.label_status{
+    padding-bottom: 10px;
+}
+
+.input_status{
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.buttons_assignee{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.submit_assignee{
+    display: flex;
+    justify-content: center;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+.submit_button{
+    background-color: #23455F;
+    width: 75px;
+    height:35px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.decline{
+    background-color: #920505;
+    width: 75px;
+    height:35px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.decline_button_popup{
+    width: 90px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #920505;
+    color: white;
+    transition: background-color 0.3s;
+}
