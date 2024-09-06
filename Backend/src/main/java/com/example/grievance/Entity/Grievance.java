@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 public class Grievance {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
     @Column(unique = true, nullable = false)
     private String ticketNumber;
 

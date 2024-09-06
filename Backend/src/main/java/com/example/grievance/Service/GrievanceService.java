@@ -46,13 +46,13 @@ public class GrievanceService {
     }
 
 
-    public Optional<Grievance> getGrievanceById(int id) {
-        return grievanceRepository.findById(id);
+    public Optional<Grievance> getGrievanceByTicketNumber(String ticketNumber) {
+        return grievanceRepository.findByTicketNumber(ticketNumber);
     }
 
     // Update an existing grievance
-    public Grievance updateGrievance(int id, Grievance grievanceDetails) {
-        Grievance grievance = grievanceRepository.findById(id)
+    public Grievance updateGrievance(String ticketNumber, Grievance grievanceDetails) {
+        Grievance grievance = grievanceRepository.findByTicketNumber(ticketNumber)
                 .orElseThrow(() -> new RuntimeException("Grievance not found"));
 
         grievance.setName(grievanceDetails.getName());
@@ -73,8 +73,8 @@ public class GrievanceService {
     }
 
 
-    public void deleteGrievance(int id) {
-        grievanceRepository.deleteById(id);
+    public void deleteGrievance(String ticketNumber) {
+        grievanceRepository.deleteByTicketNumber(ticketNumber);
     }
 
 

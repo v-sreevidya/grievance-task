@@ -32,24 +32,24 @@ public class GrievanceController {
         return grievances.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<GrievanceDTO> getGrievanceById(@PathVariable int id) {
-        Optional<Grievance> grievance = grievanceService.getGrievanceById(id);
+    @GetMapping("/{ticketNumber}")
+    public ResponseEntity<GrievanceDTO> getGrievanceByTicketNumber(@PathVariable String ticketNumber) {
+        Optional<Grievance> grievance = grievanceService.getGrievanceByTicketNumber(ticketNumber);
         return grievance.map(g -> ResponseEntity.ok(convertToDTO(g)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<GrievanceDTO> updateGrievance(@PathVariable int id, @RequestBody GrievanceDTO grievanceDTO) {
+    @PutMapping("/{ticketNumber}")
+    public ResponseEntity<GrievanceDTO> updateGrievance(@PathVariable String ticketNumber, @RequestBody GrievanceDTO grievanceDTO) {
         Grievance grievanceDetails = convertToEntity(grievanceDTO);
-        Grievance updatedGrievance = grievanceService.updateGrievance(id, grievanceDetails);
+        Grievance updatedGrievance = grievanceService.updateGrievance(ticketNumber, grievanceDetails);
         GrievanceDTO updatedGrievanceDTO = convertToDTO(updatedGrievance);
         return ResponseEntity.ok(updatedGrievanceDTO);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteGrievance(@PathVariable int id) {
-        grievanceService.deleteGrievance(id);
+    @DeleteMapping("/{ticketNumber}")
+    public ResponseEntity<Void> deleteGrievance(@PathVariable String ticketNumber) {
+        grievanceService.deleteGrievance(ticketNumber);
         return ResponseEntity.noContent().build();
     }
 
@@ -57,7 +57,7 @@ public class GrievanceController {
 
     private Grievance convertToEntity(GrievanceDTO grievanceDTO) {
         Grievance grievance = new Grievance();
-        grievance.setId(grievanceDTO.getId());
+        grievance.setTicketNumber(grievanceDTO.getTicketNumber());
         grievance.setTicketNumber(grievanceDTO.getTicketNumber());  // Added ticketNumber conversion
         grievance.setName(grievanceDTO.getName());
         grievance.setEmail(grievanceDTO.getEmail());
@@ -72,7 +72,7 @@ public class GrievanceController {
 
     private GrievanceDTO convertToDTO(Grievance grievance) {
         GrievanceDTO grievanceDTO = new GrievanceDTO();
-        grievanceDTO.setId(grievance.getId());
+        grievanceDTO.setTicketNumber(grievance.getTicketNumber());
         grievanceDTO.setTicketNumber(grievance.getTicketNumber());  // Added ticketNumber conversion
         grievanceDTO.setName(grievance.getName());
         grievanceDTO.setEmail(grievance.getEmail());
