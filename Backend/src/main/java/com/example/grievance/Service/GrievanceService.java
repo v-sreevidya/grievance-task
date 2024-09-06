@@ -1,52 +1,66 @@
 package com.example.grievance.Service;
 
 import com.example.grievance.Entity.Grievance;
-import com.example.grievance.repository.repository;
+import com.example.grievance.repository.GrievanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;  // Import for generating unique ticketNumber
 
 @Service
 public class GrievanceService {
 
     @Autowired
-    private repository repository;
+    private GrievanceRepository grievanceRepository;
 
-    // Create a new grievance with a specific status
+
+    public Grievance saveGrievance(Grievance grievance) {
+        return grievanceRepository.save(grievance);
+    }
+
+    // Create a new grievance with a specific status and ticket number
     public Grievance createGrievance(Grievance grievance) {
+        System.out.println("Creating grievance: " + grievance);
         grievance.setCreatedAt(LocalDateTime.now());
         grievance.setUpdatedAt(LocalDateTime.now());
+
+
         if (grievance.getStatus() == null || grievance.getStatus().isEmpty()) {
-            grievance.setStatus("Pending"); // Default status if not provided
+            grievance.setStatus("Pending");
         }
-        return repository.save(grievance);
+
+
+        if (grievance.getTicketNumber() == null || grievance.getTicketNumber().isEmpty()) {
+            grievance.setTicketNumber(generateTicketNumber());
+        }
+
+        return grievanceRepository.save(grievance);
     }
 
-    // Retrieve all grievances
+
     public List<Grievance> getAllGrievances() {
-        return repository.findAll();
+        return grievanceRepository.findAll();
     }
 
-    // Retrieve a grievance by its ID
+
     public Optional<Grievance> getGrievanceById(int id) {
-        return repository.findById(id);
+        return grievanceRepository.findById(id);
     }
 
     // Update an existing grievance
     public Grievance updateGrievance(int id, Grievance grievanceDetails) {
-        Grievance grievance = repository.findById(id)
+        Grievance grievance = grievanceRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Grievance not found"));
 
         grievance.setName(grievanceDetails.getName());
         grievance.setEmail(grievanceDetails.getEmail());
         grievance.setReason(grievanceDetails.getReason());
-
         grievance.setDescription(grievanceDetails.getDescription());
 
-        // Update the status only if it's one of the allowed statuses
+
         String status = grievanceDetails.getStatus();
         if (isValidStatus(status)) {
             grievance.setStatus(status);
@@ -55,22 +69,25 @@ public class GrievanceService {
         }
 
         grievance.setUpdatedAt(LocalDateTime.now());
-        return repository.save(grievance);
+        return grievanceRepository.save(grievance);
     }
 
-    // Delete a grievance by its ID
+
     public void deleteGrievance(int id) {
-        repository.deleteById(id);
+        grievanceRepository.deleteById(id);
     }
 
-    // Helper method to validate grievance status
+
     private boolean isValidStatus(String status) {
-        return status.equals("Closed") || 
-               status.equals("Resolved") || 
-               status.equals("Pending") || 
-               status.equals("Open") || 
-               status.equals("InProgress");
+        return status.equals("Closed") ||
+                status.equals("Resolved") ||
+                status.equals("Pending") ||
+                status.equals("Open") ||
+                status.equals("InProgress");
+    }
+
+
+    private String generateTicketNumber() {
+        return UUID.randomUUID().toString();
     }
 }
-
-

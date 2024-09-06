@@ -1,41 +1,37 @@
 import React, { useState } from 'react';
 import './GrievanceRegistration.css';
-import File from '../../../Assets/icons/File.png';
 import Logo from '../../../Assets/logo_Dashboard.png';
 
 function GrievanceRegistration() {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
-    const [ticketNumber, setTicketNumber] = useState("");
+    const [ticketNumber, setTicketNumber] = useState(""); 
     const [formData, setFormData] = useState({
         username: "",
         email: "",
         address: "",
         phoneNumber: "",
-        reason: "1", // Default value for the reason select
+        reason: "", // Updated to store reason directly
         description: "",
         invoice: null,
         invoiceDate: ""
     });
 
     const handleClick = async () => {
-        const randomTicketNumber = Math.floor(10000 + Math.random() * 90000);
-        setTicketNumber(randomTicketNumber);
-        setIsPopupVisible(true);
+        // Generate a random ticket number
+        const randomTicketNumber = `TICKET-${Math.floor(Math.random() * 1000000)}`;
 
         // Prepare the form data to send to the backend
         const dataToSend = {
             name: formData.username,
             email: formData.email,
-            
-            
-            reason: formData.reason,
+            reason: formData.reason, // Sending the selected reason string
             description: formData.description,
             invoiceDate: formData.invoiceDate,
-            
+            ticketNumber: randomTicketNumber // Send the generated ticket number to the backend
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/v1/grievances/add', {
+            const response = await fetch('http://localhost:8080/api/v1/grievance/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,8 +40,10 @@ function GrievanceRegistration() {
             });
 
             if (response.ok) {
-                const result = await response.text();
+                const result = await response.json();
                 console.log(result); // Handle success
+                setTicketNumber(randomTicketNumber); // Set the generated ticket number
+                setIsPopupVisible(true); // Show the popup after success
             } else {
                 console.error('Failed to submit grievance'); // Handle errors
             }
@@ -56,17 +54,6 @@ function GrievanceRegistration() {
 
     const closePopup = () => {
         setIsPopupVisible(false);
-    };
-
-    const handleFileChange = (event) => {
-        const fileInput = event.target;
-        const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file chosen';
-        fileInput.setAttribute('data-file-name', fileName);
-
-        setFormData({
-            ...formData,
-            invoice: event.target.files[0] // Store the file in formData
-        });
     };
 
     const handleInputChange = (event) => {
@@ -118,14 +105,19 @@ function GrievanceRegistration() {
                             <div className='registration-form-row'>
                                 <div className="registration-reason">
                                     <label className="registration-reason-label" htmlFor="reason">Return Reason</label>
-                                    <select className='registration-reason-input' name="reason" value={formData.reason} onChange={handleInputChange}>
-                                        <option value="1">Select Reason</option>
-                                        <option value="2">Damaged product</option>
-                                        <option value="3">Shipping delay</option>
-                                        <option value="4">Exchange/refund issue</option>
-                                        <option value="5">Quality</option>
-                                        <option value="6">Wrong Product (includes colour and size)</option>
-                                        <option value="7">Availability Issues</option>
+                                    <select
+                                        className='registration-reason-input'
+                                        id="reason"
+                                        name="reason"
+                                        value={formData.reason}
+                                        onChange={handleInputChange}
+                                    >
+                                        <option value="" disabled hidden>Select Reason</option>
+                                        <option value="Damaged product">1. Damaged product</option>
+                                        <option value="Shipping delay">2. Shipping delay</option>
+                                        <option value="Exchange/Refund issue">3. Exchange/Refund issue</option>
+                                        <option value="Quality">4. Quality</option>
+                                        <option value="Wrong Product">5. Wrong Product (includes colour and size)</option>
                                     </select>
                                 </div>
                                 <div className="registration-description">
@@ -134,19 +126,6 @@ function GrievanceRegistration() {
                                 </div>
                             </div>
                             <div className='registration-form-row'>
-                                <div className="registration-invoice">
-                                    <label className="registration-invoice-label" htmlFor="invoice">Invoice / Bill</label>
-                                    <div className="file-input">
-                                        <input 
-                                            className="registration-invoice-input" 
-                                            type="file" 
-                                            id="invoice" 
-                                            name="invoice"
-                                            onChange={handleFileChange} 
-                                        />
-                                        <img className="file-choose" src={File} alt="File" />
-                                    </div>
-                                </div>
                                 <div className="registration-invoiceDate">
                                     <label className="registration-invoiceDate-label">Invoice Date</label>
                                     <div className="calender-input">
@@ -165,7 +144,7 @@ function GrievanceRegistration() {
                                 <div className="popup-overlay" onClick={closePopup}>
                                     <div className="popup" onClick={(e) => e.stopPropagation()}>
                                         <img src={Logo} alt="Logo" className="popup-logo" />
-                                        <h1>Thank you !</h1>
+                                        <h1>Thank you!</h1>
                                         <p>Your help is on its way.</p>
                                         <div className="ticket">
                                             <div className='ticket-heading'>Your Ticket No :</div>

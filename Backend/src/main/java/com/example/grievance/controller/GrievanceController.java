@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/grievances")
+@RequestMapping("/api/v1/grievance")
 public class GrievanceController {
 
     @Autowired
@@ -58,11 +58,12 @@ public class GrievanceController {
     private Grievance convertToEntity(GrievanceDTO grievanceDTO) {
         Grievance grievance = new Grievance();
         grievance.setId(grievanceDTO.getId());
+        grievance.setTicketNumber(grievanceDTO.getTicketNumber());  // Added ticketNumber conversion
         grievance.setName(grievanceDTO.getName());
         grievance.setEmail(grievanceDTO.getEmail());
         grievance.setReason(grievanceDTO.getReason());
         grievance.setDescription(grievanceDTO.getDescription());
-        
+
         grievance.setStatus(grievanceDTO.getStatus());
         grievance.setCreatedAt(grievanceDTO.getCreatedAt());
         grievance.setUpdatedAt(grievanceDTO.getUpdatedAt());
@@ -72,6 +73,7 @@ public class GrievanceController {
     private GrievanceDTO convertToDTO(Grievance grievance) {
         GrievanceDTO grievanceDTO = new GrievanceDTO();
         grievanceDTO.setId(grievance.getId());
+        grievanceDTO.setTicketNumber(grievance.getTicketNumber());  // Added ticketNumber conversion
         grievanceDTO.setName(grievance.getName());
         grievanceDTO.setEmail(grievance.getEmail());
         grievanceDTO.setReason(grievance.getReason());
