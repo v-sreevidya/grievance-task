@@ -98,25 +98,25 @@ cursor: pointer;
     width: 24px;
     height: 24px;
 }
+.arrow_down:hover{
+    cursor: pointer;
+}
 .date_assignee{
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding-left: 25px;
 }
 
 .user_id_assignee{
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding-left: 50px;
 }
 
 .assignee_id_assignee{
     display: flex;
     align-items: center;
-    flex-direction: row;
-    padding-left: 20px; 
+    flex-direction: row; 
 }
 
 .category_assignee{
@@ -179,25 +179,32 @@ cursor: pointer;
 
 .list_data_ticketNo_assignee{
     
+    width: 80px;
     text-align: left; 
     padding: 10px;
 }
 .list_data_date_assignee{
+
+    width: 100px;
     text-align: center; 
     padding: 10px;
     
 }
 .list_data_userid_assignee{
+
+    width: 100px;
     text-align: center; 
     padding: 10px;
 }
 
 .list_data_assigneeid_assignee{
+    width: 80px;
     text-align: center;
     padding: 10px; 
     
 }
 .list_data_category_assignee{
+    width: 180px;
     text-align: center; 
     padding: 10px;
 }
