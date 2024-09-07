@@ -21,12 +21,13 @@ import NotificationAssignee from '../Pages/Assignee/NotificationAssignee/Notific
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/grievances/:ticketNumber" element={<GrievanceDetails />} />
       <Route path="/" element={<SignIn />} />
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/signUp2" element={<SignUp2 />} />
       {/* SUPERVISOR */}
       <Route path="/dashboard/supervisor" element={<SupervisorDashboardLayout><DashboardSupervisor /></SupervisorDashboardLayout>} />
-      <Route path="/dashboard/supervisor/edit" element={<SupervisorDashboardLayout><GrievanceDetails /></SupervisorDashboardLayout>} />
+      <Route path="/dashboard/supervisor/edit/:ticketNumber" element={<SupervisorDashboardLayout><GrievanceDetails /></SupervisorDashboardLayout>} />
       <Route path="/notificationSupervisor" element={<UserDashboardLayout><NotificationSupervisor/></UserDashboardLayout>} />
       {/* ASSIGNEE */}
       <Route path="/dashboard/assignee" element={<DashboardLayout><DashboardAssignee /></DashboardLayout>} />

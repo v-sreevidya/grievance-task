@@ -5,25 +5,26 @@ import java.time.LocalDateTime;
 
 public class GrievanceDTO {
 
-    private int id;
+//    private int id;
     private String ticketNumber;  // Added ticketNumber field
     private String name;
     private String email;
     private String reason;
     private String description;
+    //private String phoneNumber;
     private String status;
     private LocalDate createdAt;
     private LocalDateTime updatedAt;
 
     // Getters and Setters
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getTicketNumber() {  // Getter for ticketNumber
         return ticketNumber;
@@ -64,6 +65,10 @@ public class GrievanceDTO {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
+
+
 
     public String getStatus() {
         return status;

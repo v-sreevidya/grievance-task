@@ -30,6 +30,8 @@ public class Grievance {
     @Column(nullable = false)
     private String description;
 
+//    @Column(nullable = false)
+//    private String phoneNumber;
 
 
 

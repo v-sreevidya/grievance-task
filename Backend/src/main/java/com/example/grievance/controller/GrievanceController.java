@@ -4,13 +4,15 @@ import com.example.grievance.DTO.GrievanceDTO;
 import com.example.grievance.Entity.Grievance;
 import com.example.grievance.Service.GrievanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/grievances")
 public class GrievanceController {
@@ -35,9 +37,10 @@ public class GrievanceController {
     @GetMapping("/{ticketNumber}")
     public ResponseEntity<GrievanceDTO> getGrievanceByTicketNumber(@PathVariable String ticketNumber) {
         Optional<Grievance> grievance = grievanceService.getGrievanceByTicketNumber(ticketNumber);
-        return grievance.map(g -> ResponseEntity.ok(convertToDTO(g)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        return grievance.map(g -> ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(convertToDTO(g)))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
 
     @PutMapping("/{ticketNumber}")
     public ResponseEntity<GrievanceDTO> updateGrievance(@PathVariable String ticketNumber, @RequestBody GrievanceDTO grievanceDTO) {
@@ -63,6 +66,7 @@ public class GrievanceController {
         grievance.setEmail(grievanceDTO.getEmail());
         grievance.setReason(grievanceDTO.getReason());
         grievance.setDescription(grievanceDTO.getDescription());
+//        grievance.setPhoneNumber(grievanceDTO.getPhoneNumber());
 
         grievance.setStatus(grievanceDTO.getStatus());
         grievance.setCreatedAt(grievanceDTO.getCreatedAt());
@@ -78,6 +82,7 @@ public class GrievanceController {
         grievanceDTO.setEmail(grievance.getEmail());
         grievanceDTO.setReason(grievance.getReason());
         grievanceDTO.setDescription(grievance.getDescription());
+//        grievanceDTO.setPhoneNumber(grievance.getPhoneNumber());
 
         grievanceDTO.setStatus(grievance.getStatus());
         grievanceDTO.setCreatedAt(grievance.getCreatedAt());

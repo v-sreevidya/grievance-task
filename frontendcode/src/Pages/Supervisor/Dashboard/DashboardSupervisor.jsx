@@ -35,10 +35,9 @@ function DashboardSupervisor() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    // Fetch grievances from the API
     const fetchGrievances = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/grievances');
+        const response = await axios.get("http://localhost:8080/api/v1/grievances");
         setGrievances(response.data);
         setSortedGrievances(response.data);
       } catch (error) {
@@ -87,7 +86,7 @@ function DashboardSupervisor() {
   };
 
   const handleEdit = (ticketNumber) => {
-    setIsPopupVisible(true);
+    // Navigate to grievance details page for editing
     console.log(`Edit grievance with ticket number: ${ticketNumber}`);
   };
 
@@ -111,18 +110,16 @@ function DashboardSupervisor() {
         </div>
         <div className="search">
           <form>
-            <div>
-              <div className='form-search'>
-                <input
-                  className='search-input'
-                  type="search"
-                  id="search"
-                  name="search"
-                  placeholder="Search for Ticket No"
-                  value={searchTerm}
-                  onChange={handleSearch}
-                />
-              </div>
+            <div className='form-search'>
+              <input
+                className='search-input'
+                type="search"
+                id="search"
+                name="search"
+                placeholder="Search for Ticket No"
+                value={searchTerm}
+                onChange={handleSearch}
+              />
             </div>
           </form>
         </div>
@@ -133,99 +130,84 @@ function DashboardSupervisor() {
           <div className='title'>Grievances</div>
         </div>
         <div className="horizontal-line"></div>
-        <div>
-          <tr className="menu_bar">
-            <div>
+        <table className="grievance-table">
+          <thead>
+            <tr className="menu_bar">
               <th className="ticket_no_supervisor" onClick={() => sortGrievances('ticketNumber')}>
                 TICKET NO
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-            </div>
-            <div>
               <th className="date_supervisor" onClick={() => sortGrievances('date')}>
                 DATE
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-            </div>
-            <div>
-              <th className="user_id_supervisor" onClick={() => sortGrievances('userid')}>
+              <th className="user_id_supervisor" onClick={() => sortGrievances('name')}>
                 USER NAME
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-            </div>
-            <div>
               <th className="assignee_id_supervisor" onClick={() => sortGrievances('assigneeid')}>
                 ASSIGNEE ID
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-            </div>
-            <div>
-              <th className="category_supervisor" onClick={() => sortGrievances('category')}>
+              <th className="category_supervisor" onClick={() => sortGrievances('reason')}>
                 CATEGORY
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-            </div>
-            <div>
               <th className="status_supervisor" onClick={() => sortGrievances('status')}>
                 STATUS
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-            </div>
-          </tr>
-        </div>
-        <div className="horizontal-line2"></div>
-        <table className="grievance-table">
+            </tr>
+          </thead>
           <tbody className="list">
-            {sortedGrievances.map((grievance, ticketNumber) => (
+            {sortedGrievances.map((grievance) => (
               <tr
                 className='list_row'
-                key={ticketNumber}
+                key={grievance.ticketNumber}
                 onMouseEnter={() => handleMouseEnter(grievance.ticketNumber)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div><td className='list_data_ticketNo_supervisor'>{grievance.ticketNumber}</td></div>
-                <div><td className='list_data_date_supervisor'>{grievance.createdAt}</td></div>
-                <div><td className='list_data_userid_supervisor'>{grievance.name}</td></div>
-                <div><td className='list_data_assigneeid_supervisor'>{grievance.assigneeid}</td></div>
-                <div><td className='list_data_category_supervisor'>{grievance.reason}</td></div>
-                <div>
-                  <td className='list_data_status_supervisor'>
-                    {hoveredGrievance === grievance.ticketNumber ? (
-                      grievance.status === 'CLOSED' ? (
-                        <div className="delete">
-                          <div className={`app-container ${isPopupVisible ? "blurred" : ""}`}>
-                            <button className='delete_button' onClick={() => handleDelete(grievance.ticketNumber)}>DELETE</button>
-                            {isPopupVisible && (
-                              <div className="popup-overlay" onClick={closePopup}>
-                                <div className="popup" onClick={(e) => e.stopPropagation()}>
-                                  <div className='delete-heading'>DELETE?</div>
-                                  <div className='delete-info'>Are you sure to Delete Ticket no <span className='tckt'>{grievance.ticketNumber} </span>.</div>
-                                  <Link to="/dashboard/supervisor">
-                                    <button onClick={closePopup} className="delete_button_popup">Done</button>
-                                  </Link>
-                                </div>
+                <td className='list_data_ticketNo_supervisor'>{grievance.ticketNumber}</td>
+                <td className='list_data_date_supervisor'>{grievance.createdAt}</td>
+                <td className='list_data_userid_supervisor'>{grievance.name}</td>
+                <td className='list_data_assigneeid_supervisor'>{grievance.assigneeid}</td>
+                <td className='list_data_category_supervisor'>{grievance.reason}</td>
+                <td className='list_data_status_supervisor'>
+                  {hoveredGrievance === grievance.ticketNumber ? (
+                    grievance.status === 'CLOSED' ? (
+                      <div className="delete">
+                        <div className={`app-container ${isPopupVisible ? "blurred" : ""}`}>
+                          <button className='delete_button' onClick={() => handleDelete(grievance.ticketNumber)}>DELETE</button>
+                          {isPopupVisible && (
+                            <div className="popup-overlay" onClick={closePopup}>
+                              <div className="popup" onClick={(e) => e.stopPropagation()}>
+                                <div className='delete-heading'>DELETE?</div>
+                                <div className='delete-info'>Are you sure to Delete Ticket no <span className='tckt'>{grievance.ticketNumber}</span>?</div>
+                                <Link to="/dashboard/supervisor">
+                                  <button onClick={closePopup} className="delete_button_popup">Done</button>
+                                </Link>
                               </div>
-                            )}
-                          </div>
+                            </div>
+                          )}
                         </div>
-                      ) : hoveredGrievance === grievance.ticketNumber && grievance.status === 'PENDING' ? (
-                        <Link to="/dashboard/supervisor/edit">
-                          <button className='edit_button' onClick={() => handleEdit(grievance.ticketNumber)}>EDIT</button>
-                        </Link>
-                      ) : (
-                        <>
-                          <span className='list_data_status_icon'>{getStatusIcon(grievance.status)}</span>
-                          <span>{grievance.status}</span>
-                        </>
-                      )
+                      </div>
+                    ) : hoveredGrievance === grievance.ticketNumber && grievance.status === 'PENDING' ? (
+                      <Link to={`/dashboard/supervisor/edit/${grievance.ticketNumber}`}>
+                        <button className='edit_button' onClick={() => handleEdit(grievance.ticketNumber)}>EDIT</button>
+                      </Link>
                     ) : (
                       <>
                         <span className='list_data_status_icon'>{getStatusIcon(grievance.status)}</span>
                         <span>{grievance.status}</span>
                       </>
-                    )}
-                  </td>
-                </div>
+                    )
+                  ) : (
+                    <>
+                      <span className='list_data_status_icon'>{getStatusIcon(grievance.status)}</span>
+                      <span>{grievance.status}</span>
+                    </>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
