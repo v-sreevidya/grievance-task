@@ -129,14 +129,14 @@
 
 
 .address_details{
-    width: 300px;
+    width: 400px;
     display: flex;
     flex-direction: row;
 }
 
 
 .label_address{
-    margin-right: 38px;
+    margin-right: 75px;
 }
 
 .seperator_address{
