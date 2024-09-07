@@ -130,35 +130,48 @@ function DashboardSupervisor() {
           <div className='title'>Grievances</div>
         </div>
         <div className="horizontal-line"></div>
-        <table className="grievance-table">
-          <thead>
-            <tr className="menu_bar">
+        <div>
+          <tr className="menu_bar">
+            <div>
               <th className="ticket_no_supervisor" onClick={() => sortGrievances('ticketNumber')}>
                 TICKET NO
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
+            </div>
+            <div>
               <th className="date_supervisor" onClick={() => sortGrievances('date')}>
                 DATE
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-              <th className="user_id_supervisor" onClick={() => sortGrievances('name')}>
+            </div>
+            <div>
+              <th className="user_id_supervisor" onClick={() => sortGrievances('userid')}>
                 USER NAME
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
+            </div>
+            <div>
               <th className="assignee_id_supervisor" onClick={() => sortGrievances('assigneeid')}>
                 ASSIGNEE ID
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-              <th className="category_supervisor" onClick={() => sortGrievances('reason')}>
+            </div>
+            <div>
+              <th className="category_supervisor" onClick={() => sortGrievances('category')}>
                 CATEGORY
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
+            </div>
+            <div>
               <th className="status_supervisor" onClick={() => sortGrievances('status')}>
                 STATUS
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
               </th>
-            </tr>
-          </thead>
+            </div>
+          </tr>
+        </div>
+        <div className="horizontal-line2"></div>
+        <table className="grievance-table">
           <tbody className="list">
             {sortedGrievances.map((grievance) => (
               <tr
