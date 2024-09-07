@@ -32,6 +32,7 @@ function GrievanceDetails() {
 
       if (response.status === 200) {
         console.log('Assignee updated successfully');
+        
       } else {
         throw new Error('Failed to update assignee');
       }
@@ -89,6 +90,24 @@ function GrievanceDetails() {
                     <div className="value_description">{grievanceDetails.description}</div>
                   </div>
                 </div>
+                <div className="row_details">
+                <div className="phoneNumber_details">
+                  <div className='phoneNumber'>Phone Number</div>
+                    <div className="seperator_phoneNumber">:</div>
+                    <div className="value_phoneNumber">{grievanceDetails.phoneNumber}</div>
+                </div>
+              
+
+              
+                <div className="address_details">
+                  <div className='address'>Address</div>
+                    <div className="seperator_address">:</div>
+                    <div className="value_address">{grievanceDetails.address}</div>
+                </div>
+              </div>
+
+
+
                 <div className="row_details">
                 <div className="invoice_date_details">
                   <div className='label_invoice_date'>Invoice Date</div>

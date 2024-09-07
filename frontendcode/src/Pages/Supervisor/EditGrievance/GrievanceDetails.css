@@ -132,11 +132,12 @@
     width: 300px;
     display: flex;
     flex-direction: row;
+    text-align: left;
 }
 
 
 .label_address{
-    margin-right: 38px;
+    margin-right: 92px;
 }
 
 .seperator_address{
@@ -148,23 +149,23 @@
     font-weight: 600;
 }
 
-.phone_no_details{
+.phoneNumber_details{
     width: 400px;
     display: flex;
     flex-direction: row;
-    text-align: left;
+    
 }
 
-.label_phone_no{
+.label_phoneNumber{
     margin-right: 28px;
 }
 
-.seperator_phone_no{
+.seperator_phoneNumber{
     margin-right: 50px;
     
 }
 
-.value_phone_no{
+.value_phoneNumber{
     font-weight: 600;
 }
 

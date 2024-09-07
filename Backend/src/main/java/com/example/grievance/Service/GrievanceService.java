@@ -60,7 +60,8 @@ public class GrievanceService {
         grievance.setEmail(grievanceDetails.getEmail());
         grievance.setReason(grievanceDetails.getReason());
         grievance.setDescription(grievanceDetails.getDescription());
-        //grievance.setPhoneNumber(grievanceDetails.getPhoneNumber());
+        grievance.setPhoneNumber(grievanceDetails.getPhoneNumber());
+        grievance.setAddress(grievance.getAddress());
 
 
         String status = grievanceDetails.getStatus();

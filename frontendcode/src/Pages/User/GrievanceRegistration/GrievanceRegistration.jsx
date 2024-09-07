@@ -18,7 +18,7 @@ function GrievanceRegistration() {
 
     const handleClick = async () => {
         
-        const randomTicketNumber = `TICKET-${Math.floor(Math.random() * 1000000)}`;
+        const randomTicketNumber = `${Math.floor(Math.random() * 1000000)}`;
 
         
         const dataToSend = {
@@ -26,6 +26,8 @@ function GrievanceRegistration() {
             email: formData.email,
             reason: formData.reason, 
             description: formData.description,
+            phoneNumber: formData.phoneNumber,
+            address: formData.address,
             invoiceDate: formData.invoiceDate,
             ticketNumber: randomTicketNumber 
         };

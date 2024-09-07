@@ -11,8 +11,9 @@ public class GrievanceDTO {
     private String email;
     private String reason;
     private String description;
-    //private String phoneNumber;
+    private String phoneNumber;
     private String status;
+    private String address;
     private LocalDate createdAt;
     private LocalDateTime updatedAt;
 
@@ -66,9 +67,13 @@ public class GrievanceDTO {
         this.description = description;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-
-
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getStatus() {
         return status;
@@ -76,6 +81,14 @@ public class GrievanceDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public LocalDate getCreatedAt() {

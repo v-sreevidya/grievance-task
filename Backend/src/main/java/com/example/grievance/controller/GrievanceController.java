@@ -66,7 +66,8 @@ public class GrievanceController {
         grievance.setEmail(grievanceDTO.getEmail());
         grievance.setReason(grievanceDTO.getReason());
         grievance.setDescription(grievanceDTO.getDescription());
-//        grievance.setPhoneNumber(grievanceDTO.getPhoneNumber());
+        grievance.setPhoneNumber(grievanceDTO.getPhoneNumber());
+        grievance.setAddress(grievanceDTO.getAddress());
 
         grievance.setStatus(grievanceDTO.getStatus());
         grievance.setCreatedAt(grievanceDTO.getCreatedAt());
@@ -82,7 +83,8 @@ public class GrievanceController {
         grievanceDTO.setEmail(grievance.getEmail());
         grievanceDTO.setReason(grievance.getReason());
         grievanceDTO.setDescription(grievance.getDescription());
-//        grievanceDTO.setPhoneNumber(grievance.getPhoneNumber());
+        grievanceDTO.setPhoneNumber(grievance.getPhoneNumber());
+        grievanceDTO.setAddress(grievance.getAddress());
 
         grievanceDTO.setStatus(grievance.getStatus());
         grievanceDTO.setCreatedAt(grievance.getCreatedAt());
