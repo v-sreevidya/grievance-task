@@ -13,6 +13,41 @@ public class NotificationDTO {
         this.sentAt = sentAt;
     }
     
+    // Default constructor
+    public NotificationDTO() {
+    }
+    
     // Getters and Setters
-}
+    
+    public Long getId() {
+        return ticketNumber;
+    }
 
+    public void setId(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public LocalDateTime getSentAt() {
+        return sentAt;
+    }
+
+    public void setSentAt(LocalDateTime sentAt) {
+        this.sentAt = sentAt;
+    }
+}
