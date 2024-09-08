@@ -23,7 +23,7 @@ public class NotificationDTO {
         return ticketNumber;
     }
 
-    public void setId(String ticketNumber) {
+    public void setTicketNumber(String ticketNumber) {
         this.ticketNumber = ticketNumber;
     }
 
