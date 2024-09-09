@@ -134,9 +134,9 @@ function Grievances() {
         </table>
         
 
-        <div className="horizontal-line2"></div>
+        {/* <div className="horizontal-line2"></div> */}
        
-       
+        <div className="list_container_grievances">
         <table className="grievance-table">
           <tbody className="list">
             {grievances.map((grievance) => (
@@ -151,16 +151,17 @@ function Grievances() {
             ))}
           </tbody>
         </table>
+        </div>
         
 
         <div className="bottom_section">
           <div className="horizontal-line3"></div>
           
-          <div className="pagination">
+          {/* <div className="pagination">
             <button className="pagination-button">&lt;</button>
             <span className="pagination-info">1</span>
             <button className="pagination-button">&gt;</button>
-          </div>
+          </div> */}
         </div>
       </div>
      
