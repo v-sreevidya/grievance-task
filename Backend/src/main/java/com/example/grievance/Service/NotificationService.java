@@ -1,3 +1,7 @@
+package com.example.grievance.Service;
+
+import com.example.grievance.Entity.Notification;
+import com.example.grievance.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;

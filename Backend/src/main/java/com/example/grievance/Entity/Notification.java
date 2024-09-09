@@ -1,3 +1,5 @@
+package com.example.grievance.Entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +32,7 @@ public class Notification {
         return ticketNumber;
     }
 
-    public void setTicketNumber(Long ticketNumber) {
+    public void setTicketNumber(String ticketNumber) {
         this.ticketNumber = ticketNumber;
     }
 

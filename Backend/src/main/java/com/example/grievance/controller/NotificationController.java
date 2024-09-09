@@ -1,3 +1,7 @@
+package com.example.grievance.controller;
+
+import com.example.grievance.Entity.Notification;
+import com.example.grievance.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

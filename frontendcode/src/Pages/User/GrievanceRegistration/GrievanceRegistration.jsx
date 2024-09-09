@@ -32,7 +32,7 @@ function GrievanceRegistration({ addGrievance }) {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/v1/grievances/add', {
+            const response = await fetch('http://localhost:8080/api/v1/grievances/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

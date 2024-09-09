@@ -21,7 +21,7 @@ public class GrievanceController {
     @Autowired
     private GrievanceService grievanceService;
 
-    @PostMapping("/add")
+    @PostMapping("/create")
     public ResponseEntity<GrievanceDTO> createGrievance(@RequestBody GrievanceDTO grievanceDTO) {
         Grievance grievance = convertToEntity(grievanceDTO);
         Grievance savedGrievance = grievanceService.createGrievance(grievance);

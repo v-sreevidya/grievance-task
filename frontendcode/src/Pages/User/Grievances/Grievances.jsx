@@ -100,7 +100,7 @@ function Grievances() {
         <div className="title_bar">
           <div className="title">Grievances</div>
           <Link to="/GrievanceRegistration">
-            <button>ADD</button>
+            <button>CREATE</button>
           </Link>
         </div>
         
@@ -140,7 +140,7 @@ function Grievances() {
         <table className="grievance-table">
           <tbody className="list">
             {grievances.map((grievance) => (
-              <tr className="list_row" key={grievance.ticketNo}>
+              <tr className="list_row" key={grievance.ticketNumber}>
                 <td className="list_data_ticketNumber">{grievance.ticketNumber}</td>
                 <td className="list_data_createdAt">{grievance.createdAt}</td>
                 <td className="list_data_status">
