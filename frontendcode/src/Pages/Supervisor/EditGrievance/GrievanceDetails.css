@@ -132,12 +132,11 @@
     width: 300px;
     display: flex;
     flex-direction: row;
-    text-align: left;
 }
 
 
 .label_address{
-    margin-right: 92px;
+    margin-right: 38px;
 }
 
 .seperator_address{
@@ -149,25 +148,27 @@
     font-weight: 600;
 }
 
-.phoneNumber_details{
+
+.phone_no_details{
     width: 400px;
     display: flex;
     flex-direction: row;
-    
+    text-align: left;
 }
 
-.label_phoneNumber{
+.label_phone_no{
     margin-right: 28px;
 }
 
-.seperator_phoneNumber{
+.seperator_phone_no{
     margin-right: 50px;
     
 }
 
-.value_phoneNumber{
+.value_phone_no{
     font-weight: 600;
 }
+
 
 .reason_details{
     width: 300px;
@@ -273,6 +274,26 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+
+.close_supervisor{
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.close_button{
+    background-color: #323232;
+    width: 75px;
+    height:35px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 
 
 .decline{

@@ -92,16 +92,16 @@ function GrievanceDetails() {
                   </div>
                 </div>
                 <div className="row_details">
-                <div className="phoneNumber_details">
-                  <div className='phoneNumber'>Phone Number</div>
-                    <div className="seperator_phoneNumber">:</div>
-                    <div className="value_phoneNumber">{grievanceDetails.phoneNumber}</div>
+                <div className="phone_no_details">
+                  <div className='label_phone_no'>Phone No</div>
+                    <div className="seperator_phone_no">:</div>
+                    <div className="value_phone_no">{grievanceDetails.phoneNumber}</div>
                 </div>
               
 
               
                 <div className="address_details">
-                  <div className='address'>Address</div>
+                  <div className='label_address'>Address</div>
                     <div className="seperator_address">:</div>
                     <div className="value_address">{grievanceDetails.address}</div>
                 </div>
@@ -154,6 +154,11 @@ function GrievanceDetails() {
                 </div>
               </div>
             </div>
+            <div className='close_supervisor'>
+                  <Link to ="/dashboard/supervisor">
+                    <button className='close_button' type="submit">CLOSE</button>
+                  </Link>
+                </div>
           </div>
         </div>
       </div>

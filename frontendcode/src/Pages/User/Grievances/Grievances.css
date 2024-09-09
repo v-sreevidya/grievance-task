@@ -42,7 +42,11 @@
 
 .list_container_grievances{
     position: relative;
+<<<<<<< HEAD
     width: 1000px;
+=======
+    width: 900px;
+>>>>>>> 047b4154c44522c18d6b8c112f752de566267caf
     height: 520px;
     display: flex;
     flex-direction: column;
