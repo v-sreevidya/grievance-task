@@ -46,11 +46,11 @@
 
     width: 1000px;
     overflow-y: auto; 
-=======
+/* =======
     width: 1000px;
 
 >>>>>>> b00c3b647ed37883bbb5ff889538a0cc9142dc11
-
+ */
     height: 520px;
     display: flex;
     flex-direction: column;
