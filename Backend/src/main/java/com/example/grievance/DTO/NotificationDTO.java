@@ -1,10 +1,12 @@
+import java.time.LocalDateTime;
+
 public class NotificationDTO {
-    
+
     private String ticketNumber;
     private String message;
     private String recipient;
     private LocalDateTime sentAt;
-    
+
     // Constructor
     public NotificationDTO(String ticketNumber, String message, String recipient, LocalDateTime sentAt) {
         this.ticketNumber = ticketNumber;
@@ -12,14 +14,14 @@ public class NotificationDTO {
         this.recipient = recipient;
         this.sentAt = sentAt;
     }
-    
+
     // Default constructor
     public NotificationDTO() {
     }
-    
+
     // Getters and Setters
-    
-     public String getTicketNumber() {
+
+    public String getTicketNumber() {
         return ticketNumber;
     }
 
