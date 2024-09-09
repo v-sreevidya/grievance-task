@@ -43,8 +43,12 @@
 .list_container_grievances{
     position: relative;
 
+<<<<<<< HEAD
 
     width: 900px;
+=======
+    width: 1000px;
+>>>>>>> 26dafbfae8d13e14e86813dd6107c8f7fc57e5ea
 
     height: 520px;
     display: flex;
