@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './GrievanceRegistration.css';
 import Logo from '../../../Assets/logo_Dashboard.png';
 
-function GrievanceRegistration() {
+function GrievanceRegistration({ addGrievance }) {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
+   
     const [ticketNumber, setTicketNumber] = useState(""); 
     const [formData, setFormData] = useState({
         username: "",
@@ -17,10 +18,8 @@ function GrievanceRegistration() {
     });
 
     const handleClick = async () => {
-        
         const randomTicketNumber = `${Math.floor(Math.random() * 1000000)}`;
 
-        
         const dataToSend = {
             name: formData.username,
             email: formData.email,
@@ -46,7 +45,18 @@ function GrievanceRegistration() {
                 console.log(result); 
                 setTicketNumber(randomTicketNumber); 
                 setIsPopupVisible(true); 
-            } else {
+
+                // Ensure addGrievance is called if it's a valid function
+                if (typeof addGrievance === 'function') {
+                    const newGrievance = { ticketNumber: randomTicketNumber, date: formData.invoiceDate, status: 'PENDING' }; 
+                    addGrievance(newGrievance);
+
+                   
+                } else {
+                    console.error("addGrievance is not a function");
+                }
+            } 
+            else {
                 console.error('Failed to submit grievance'); 
             }
         } catch (error) {
@@ -65,7 +75,12 @@ function GrievanceRegistration() {
             [name]: value
         });
     };
-
+    console.log("addGrievance prop:", addGrievance);
+    console.log("addGrievance prop in GrievanceRegistration:", addGrievance);
+    
+      
+        
+    
     return (
         <div>
             <div className='grievance_main'>

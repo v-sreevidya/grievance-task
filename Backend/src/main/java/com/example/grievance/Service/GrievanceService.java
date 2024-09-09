@@ -93,4 +93,8 @@ public class GrievanceService {
     private String generateTicketNumber() {
         return UUID.randomUUID().toString();
     }
+
+    public Grievance save(Grievance grievance) {
+        return grievance;
+    }
 }

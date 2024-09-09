@@ -1,5 +1,6 @@
 package com.example.grievance.controller;
 
+import com.example.grievance.DTO.AssigneeDTO;
 import com.example.grievance.DTO.GrievanceDTO;
 import com.example.grievance.Entity.Grievance;
 import com.example.grievance.Service.GrievanceService;
@@ -27,6 +28,19 @@ public class GrievanceController {
         GrievanceDTO savedGrievanceDTO = convertToDTO(savedGrievance);
         return ResponseEntity.ok(savedGrievanceDTO);
     }
+    @PostMapping("/add")
+    public ResponseEntity<Grievance> addGrievance(@RequestBody Grievance grievance) {
+        Grievance savedGrievance = grievanceService.save(grievance);
+        return new ResponseEntity<>(savedGrievance, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/{ticketNumber}/assign")
+    public ResponseEntity<String> assignGrievance(@PathVariable String ticketNumber, @RequestBody AssigneeDTO assigneeDTO) {
+        // Logic to assign grievance
+        return ResponseEntity.ok("Assignee updated successfully");
+    }
+
+
 
     @GetMapping
     public List<GrievanceDTO> getAllGrievances() {

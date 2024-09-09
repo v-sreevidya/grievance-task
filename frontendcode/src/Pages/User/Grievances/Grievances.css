@@ -42,7 +42,7 @@
 
 .list_container_grievances{
     position: relative;
-    width: 1100px;
+    width: 1000px;
     height: 520px;
     display: flex;
     flex-direction: column;
@@ -98,7 +98,7 @@ button{
 
 }
 
-.ticket_no{
+.ticketNumber{
     padding-left: 65px;
     display: flex;
     align-items: center;
@@ -108,7 +108,7 @@ button{
     width: 24px;
     height: 24px;
 }
-.date{
+.invoiceDate{
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -158,11 +158,11 @@ button{
 
 
 
-.list_data_ticketNo{
+.list_data_ticketNumber{
     text-align: left; 
     padding: 10px;
 }
-.list_data_date{
+.list_data_invoiceDate{
     text-align: center;
     padding: 10px;
     
