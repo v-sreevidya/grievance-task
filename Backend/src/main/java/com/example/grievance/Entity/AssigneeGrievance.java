@@ -11,9 +11,8 @@ public class AssigneeGrievance {
     @JoinColumn(name = "grievance_id", nullable = false)
     private Grievance grievance;
 
-    @ManyToOne
-    @JoinColumn(name = "assignee_id", nullable = false)
-    private Assignee assignee;
+    @Column(name = "assignee_id", nullable = false)
+    private Long assigneeId;  // Replace Assignee object with assigneeId
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
@@ -24,7 +23,7 @@ public class AssigneeGrievance {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "assignee_type", nullable = false)
-    private AssigneeType assigneeType;
+    private AssigneeType assigneeType;  // New field for assignee type
 
     // Getters and Setters
 
@@ -44,12 +43,12 @@ public class AssigneeGrievance {
         this.grievance = grievance;
     }
 
-    public Assignee getAssignee() {
-        return assignee;
+    public Long getAssigneeId() {
+        return assigneeId;
     }
 
-    public void setAssignee(Assignee assignee) {
-        this.assignee = assignee;
+    public void setAssigneeId(Long assigneeId) {
+        this.assigneeId = assigneeId;
     }
 
     public GrievanceStatus getStatus() {
