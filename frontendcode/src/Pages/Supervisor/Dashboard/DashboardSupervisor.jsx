@@ -84,11 +84,29 @@ function DashboardSupervisor() {
     setIsPopupVisible(true);
     console.log(`Deleting grievance with ticket number: ${ticketNumber}`);
   };
-
-  const handleEdit = (ticketNumber) => {
-    // Navigate to grievance details page for editing
-    console.log(`Edit grievance with ticket number: ${ticketNumber}`);
+  const handleEdit = async (ticketNumber) => {
+    try {
+      // Send PUT request to update the status to "OPEN"
+      await axios.put(`http://localhost:8080/api/v1/grievances/${ticketNumber}/status`, { status: 'OPEN' });
+  
+      // Fetch the updated grievances after status change
+      const response = await axios.get("http://localhost:8080/api/v1/grievances");
+      setGrievances(response.data);
+      setSortedGrievances(response.data);
+      console.log(`Grievance ${ticketNumber} status changed to OPEN`);
+    } catch (error) {
+      console.error('Error updating grievance status:', error);
+    }
   };
+  
+  
+
+  // const handleEdit = (ticketNumber) => {
+  //   // Navigate to grievance details page for editing
+    
+  //   console.log(`Edit grievance with ticket number: ${ticketNumber}`);
+  // };
+  
 
   const handleSearch = (event) => {
     const value = event.target.value;
