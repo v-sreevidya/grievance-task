@@ -97,4 +97,16 @@ public class GrievanceService {
     public Grievance save(Grievance grievance) {
         return grievance;
     }
+    public Grievance updateGrievanceStatus(String ticketNumber, String status) {
+        Grievance grievance = grievanceRepository.findByTicketNumber(ticketNumber)
+                .orElseThrow(() -> new RuntimeException("Grievance not found"));
+
+        if (isValidStatus(status)) {
+            grievance.setStatus(status);
+            grievance.setUpdatedAt(LocalDateTime.now());
+            return grievanceRepository.save(grievance);
+        } else {
+            throw new IllegalArgumentException("Invalid status: " + status);
+        }
+    }
 }
