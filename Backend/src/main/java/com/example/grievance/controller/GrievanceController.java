@@ -63,6 +63,15 @@ public class GrievanceController {
         GrievanceDTO updatedGrievanceDTO = convertToDTO(updatedGrievance);
         return ResponseEntity.ok(updatedGrievanceDTO);
     }
+     @PutMapping("/api/v1/grievances/{ticketNumber}/status")
+    public ResponseEntity<Grievance> updateGrievanceStatus(@PathVariable String ticketNumber, @RequestBody Grievance updatedGrievance) {
+        Grievance updated = grievanceService.updateGrievanceStatus(ticketNumber, updatedGrievance.getStatus());
+        if (updated != null) {
+            return ResponseEntity.ok(updated);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @DeleteMapping("/{ticketNumber}")
     public ResponseEntity<Void> deleteGrievance(@PathVariable String ticketNumber) {
