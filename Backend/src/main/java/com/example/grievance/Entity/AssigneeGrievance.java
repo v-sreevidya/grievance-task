@@ -1,18 +1,21 @@
-import javax.persistence.*;
+import javax.persistence.*;  // JPA annotations
+import java.io.Serializable; // For Serializable interface (if needed)
+import java.util.Objects;    // For overriding equals and hashCode methods
 
 @Entity
 @Table(name = "assignee_grievances")
-public class AssigneeGrievance {
+public class AssigneeGrievance implements Serializable {
 
     @Column(name = "ticket_number", nullable = false, unique = true)
     private String ticketNumber;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)  // FetchType.LAZY improves performance by delaying loading of the grievance entity
     @JoinColumn(name = "grievance_id", nullable = false)
     private Grievance grievance;
 
-    @Column(name = "assignee_id", nullable = false)
-    private Long assigneeId;  // Replace Assignee object with assigneeId
+    @ManyToOne(fetch = FetchType.LAZY)  // Many grievances can be assigned to the same user
+    @JoinColumn(name = "assignee_id", nullable = false)
+    private User assignee;  // Change from assigneeId to a reference to the User entity
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
@@ -43,12 +46,12 @@ public class AssigneeGrievance {
         this.grievance = grievance;
     }
 
-    public Long getAssigneeId() {
-        return assigneeId;
+    public User getAssignee() {
+        return assignee;
     }
 
-    public void setAssigneeId(Long assigneeId) {
-        this.assigneeId = assigneeId;
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
     }
 
     public GrievanceStatus getStatus() {
@@ -73,5 +76,25 @@ public class AssigneeGrievance {
 
     public void setAssigneeType(AssigneeType assigneeType) {
         this.assigneeType = assigneeType;
+    }
+
+    // Override equals and hashCode (optional but recommended for entities)
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AssigneeGrievance that = (AssigneeGrievance) o;
+        return Objects.equals(ticketNumber, that.ticketNumber) &&
+                Objects.equals(grievance, that.grievance) &&
+                Objects.equals(assignee, that.assignee) &&
+                status == that.status &&
+                Objects.equals(resolutionFeedback, that.resolutionFeedback) &&
+                assigneeType == that.assigneeType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ticketNumber, grievance, assignee, status, resolutionFeedback, assigneeType);
     }
 }
