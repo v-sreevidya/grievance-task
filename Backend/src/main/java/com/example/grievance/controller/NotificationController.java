@@ -22,4 +22,3 @@ public class NotificationController {
         return notificationRepository.findAll();
     }
 }
-
