@@ -33,7 +33,7 @@
 .logocontainer{
     width: 90px;
 }
-.dashboard_asignee{
+.dashboard_assignee{
     text-decoration: none;
     color: #7799B0;
     font-size: 16px;
@@ -42,7 +42,7 @@
     padding: 18px 24px;
 }
 
-.dashboard_asigneee.active,
+.dashboard_assignee.active,
 .details.active,
 .notificationuser.active{
   background-color: white;
@@ -124,6 +124,6 @@
 .vertical-line {
     width: 1px;
     height: 100vh;
-    background-color: #D5D5D5; /* Space between the line and the divs */
+    background-color: #D5D5D5; 
 }
 
