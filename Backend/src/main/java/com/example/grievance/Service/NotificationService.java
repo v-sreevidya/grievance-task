@@ -24,4 +24,3 @@ public class NotificationService {
         // Additional logic for sending actual notification (e.g., email, push notification, etc.)
     }
 }
-
