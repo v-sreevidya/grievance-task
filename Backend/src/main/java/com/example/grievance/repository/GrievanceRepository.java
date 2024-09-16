@@ -12,3 +12,4 @@ public interface GrievanceRepository extends JpaRepository<Grievance,String> {
 
     void deleteByTicketNumber(String ticketNumber);
 }
+
