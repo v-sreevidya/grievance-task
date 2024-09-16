@@ -243,14 +243,13 @@
 }
 
 .submit{
-    margin: 5px 0px 15px 0px;
+    padding-bottom: 10px;
     display: flex;
     justify-content: center;
 }
-.submit-button{
+.submit-button-user{
 
-    
-    background-color: #23455F;
+    background-color: #2d3e50;
     width: 75px;
     height:35px ;
     text-decoration: none;
@@ -339,6 +338,12 @@
     font-weight: 600;
     color: red;
 }
+.buttons_user{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .done-button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -352,4 +357,38 @@
 }
 .done-button:hover {
     background-color: #1b2838;
+}
+.close_user{
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.close_button_user{
+    background-color: #323232;
+    width: 75px;
+    height:35px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+.close_user{
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.close_button_user{
+    background-color: #323232;
+    width: 75px;
+    height:35px ;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
 }
