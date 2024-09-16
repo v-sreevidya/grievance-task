@@ -128,6 +128,7 @@ cursor: pointer;
 
 .status_assignee{
     padding-right: 90px;
+    padding-left: 30px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -147,7 +148,6 @@ cursor: pointer;
     font-size: 15px;
     font-weight: 600;
     color: #7D7D7D;
-    padding: 0px 65px 0px 65px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -177,7 +177,7 @@ cursor: pointer;
 }
 
 
-.list_data_ticketNo_assignee{
+.list_data_ticketNumber_assignee{
     
     width: 80px;
     text-align: left; 
@@ -211,8 +211,6 @@ cursor: pointer;
 .list_data_status_assignee{
     width: 120px;
     text-align: left;
-    display: flex;
-    align-items: center;
     padding: 10px;
 }
 
