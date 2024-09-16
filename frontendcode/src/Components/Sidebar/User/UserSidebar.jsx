@@ -9,10 +9,9 @@ export class UserSidebar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      activeMenu: 'grievances',
+      activeMenu: '/user/grievances',
     };
   }
-
 
   handleMenuClick = (menu) => {
     this.setState({ activeMenu: menu });
@@ -29,31 +28,24 @@ export class UserSidebar extends PureComponent {
           </div>
           <div className='mainnavigation'>
             <div className='menu'>
-     
-              <Link to="/grievances"
-                className={`grievances ${activeMenu === 'grievances' ? 'active' : ''}`}
-                onClick={() => this.handleMenuClick('grievances')}
+              <Link
+                to="/user/grievances"
+                className={`grievances ${activeMenu === '/user/grievances' ? 'active' : ''}`}
+                onClick={() => this.handleMenuClick('/user/grievances')}
               >
                 <img className='icon_grievance_inactive' src={Icon_grievance_inactive} alt="grievance_inactive" />
                 <div>Grievances</div>
               </Link>
-
-                <Link to="/notificationuser"
-                  className={`notificationuser ${activeMenu === 'notificationuser' ? 'active' : ''}`}
-                  onClick={() => this.handleMenuClick('notificationuser')}
-                >
-                  <img className='icon_notification_inactive' src={Icon_notification_inactive} alt="notification_inactive" />
-                  <div>Notification</div>
-              
-                </Link>
-           
+              <Link
+                to="/user/notifications"
+                className={`notificationuser ${activeMenu === '/user/notifications' ? 'active' : ''}`}
+                onClick={() => this.handleMenuClick('/user/notifications')}
+              >
+                <img className='icon_notification_inactive' src={Icon_notification_inactive} alt="notification_inactive" />
+                <div>Notification</div>
+              </Link>
             </div>
-
             <div className='bottom'>
-              
-              
-
-
               <div className='user_indicator'>
                 <div className='user_avatar'>U</div>
                 <div className='user_details'>
