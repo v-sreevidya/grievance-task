@@ -9,10 +9,9 @@ export class AssigneeSidebar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      activeMenu: '/dashboard/asignee',
+      activeMenu: '/dashboard/assignee',
     };
   }
-
 
   handleMenuClick = (menu) => {
     this.setState({ activeMenu: menu });
@@ -29,36 +28,29 @@ export class AssigneeSidebar extends PureComponent {
           </div>
           <div className='mainnavigation'>
             <div className='menu'>
-     
-              <Link to="/dashboard/supervisor"
-                className={`dashboard_asignee ${activeMenu === '/dashboard/asignee' ? 'active' : ''}`}
-                onClick={() => this.handleMenuClick('/dashboard/asignee')}
+              <Link
+                to="/dashboard/assignee"
+                className={`dashboard_assignee ${activeMenu === '/dashboard/assignee' ? 'active' : ''}`}
+                onClick={() => this.handleMenuClick('/dashboard/assignee')}
               >
                 <img className='icon_grievance_inactive' src={Icon_grievance_inactive} alt="grievance_inactive" />
                 <div>Grievances</div>
               </Link>
-
-                <Link to="/notificationSupervisor"
-                  className={`notificationuser ${activeMenu === 'notificationuser' ? 'active' : ''}`}
-                  onClick={() => this.handleMenuClick('notificationuser')}
-                >
-                  <img className='icon_notification_inactive' src={Icon_notification_inactive} alt="notification_inactive" />
-                  <div>Notification</div>
-              
-                </Link>
-           
+              <Link
+                to="/dashboard/assignee/notifications"
+                className={`notificationuser ${activeMenu === '/dashboard/assignee/notifications' ? 'active' : ''}`}
+                onClick={() => this.handleMenuClick('/dashboard/assignee/notifications')}
+              >
+                <img className='icon_notification_inactive' src={Icon_notification_inactive} alt="notification_inactive" />
+                <div>Notification</div>
+              </Link>
             </div>
-
             <div className='bottom'>
-              
-              
-
-
               <div className='user_indicator'>
-                <div className='user_avatar'>U</div>
+                <div className='user_avatar'>A</div>
                 <div className='user_details'>
-                  <div className="user_name">User</div>
-                  <div className="user_email">user@gmail.com</div>
+                  <div className="user_name">Assignee</div>
+                  <div className="user_email">assignee@gmail.com</div>
                 </div>
               </div>
             </div>
