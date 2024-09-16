@@ -42,15 +42,7 @@
 
 .list_container_grievances{
     position: relative;
-<<<<<<< HEAD
-
-    width: 1000px;
-    overflow-y: auto; 
-/* =======
-    width: 1000px;
-
->>>>>>> b00c3b647ed37883bbb5ff889538a0cc9142dc11
- */
+    width: 1100px;
     height: 520px;
     display: flex;
     flex-direction: column;
@@ -98,6 +90,7 @@ button{
 }
 .menu_bar{
     font-size: 15px;
+    font-weight: 600;
     color: #999999;
     display: flex;
     flex-direction: row;
@@ -106,8 +99,8 @@ button{
 
 }
 
-.ticketNumber{
-    padding-left: 100px;
+.ticket_no{
+    padding-left: 65px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -116,7 +109,7 @@ button{
     width: 24px;
     height: 24px;
 }
-.invoiceDate{
+.date{
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -124,7 +117,7 @@ button{
 }
 
 .status{
-    padding-right: 65px;
+    padding-right: 90px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -139,12 +132,15 @@ button{
     background-color: #D5D5D5; 
 }
 
-
+.grievance-table-container {
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden; /* Disable horizontal scrolling */
+  }
 .grievance-table{
     font-size: 15px;
     font-weight: 600;
     color: #7d7d7d;
-    padding: 0px 65px 0px 65px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -155,10 +151,12 @@ button{
     display: flex;
     flex-direction: column;
     text-align: left; 
+    justify-content: space-between;
 }
 
 .list_row{
-
+    padding: 0px 50px 0px 65px;
+    width:1080px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -170,16 +168,14 @@ button{
     text-align: left; 
     padding: 10px;
 }
-.list_data_invoiceDate{
+.list_data_date{
     text-align: center;
     padding: 10px;
     
 }
-.list_data_status{
+.list_data_status_grievance{
     width: 120px;
     text-align: left;
-    display: flex;
-    align-items: center;
     padding: 10px;
 }
 
@@ -203,11 +199,11 @@ button{
     background-color: #D5D5D5; 
 }
 
-/* .pagination {
+.pagination {
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 40px;
     
 }
 
@@ -224,8 +220,4 @@ button{
     font-weight: 600;
     font-size: 12px;
     color: gray;
-} */
-.list_data_ticketNumber, .list_data_createdAt, .list_data_status {
-    padding: 10px;
-    white-space: nowrap; /* Prevents text from wrapping */
-  }
+}
