@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Side_image from '../../Assets/Side_image.png'
 import './SignUp.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { FormContext } from '../../FormContext/FormContext';
 
 
 function SignUp() {
-  return (
+
+    const { formData, updateFormData } = useContext(FormContext);
+
+
+    const handleChange = (e) => {
+      updateFormData({ [e.target.name]: e.target.value });
+    };
+  
+    return (
     <div className="App">
       <div className='Signup'>
           <div className='left-section'>
@@ -42,22 +51,55 @@ function SignUp() {
                         <div>
                             <div className="form-name">
                                 <label className="name-label">Name</label>
-                                <input className="name-input" type="text" id="name" name="name" placeholder="Enter Name" />
+                                <input
+                                className="name-input"
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter Name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                />
                             </div>
 
                             <div className="form-email">
                                 <label className="email-label">Email</label>
-                                <input className="email-input" type="text" id="email" name="email" placeholder=" Enter Password" />
+                                <input
+                                className="email-input"
+                                type="text"
+                                id="email"
+                                name="email"
+                                placeholder="Enter Email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                />
                             </div>
 
                             <div className="form-phone-number">
                                 <label className="phone-number-label">Phone Number</label>
-                                <input className="phone-number-input" type="text" id="phone-number" name="phone-number" placeholder="Enter Phone Number" />
+                                <input
+                                className="phone-number-input"
+                                type="text"
+                                id="phone-number"
+                                name="phoneNumber"
+                                placeholder="Enter Phone Number"
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                                />
+                                
                             </div>
 
                             <div className="form-address">
                                 <label className="address-label">Address</label>
-                                <input className="address-input" type="text" id="address" name="address" placeholder="Enter Address" />
+                                <input
+                                className="address-input"
+                                type="text"
+                                id="address"
+                                name="address"
+                                placeholder="Enter Address"
+                                value={formData.address}
+                                onChange={handleChange}
+                                />
                             </div>
                         </div>  
                     </form>
