@@ -13,7 +13,6 @@ export class SupervisorSidebar extends PureComponent {
     };
   }
 
-
   handleMenuClick = (menu) => {
     this.setState({ activeMenu: menu });
   };
@@ -29,36 +28,29 @@ export class SupervisorSidebar extends PureComponent {
           </div>
           <div className='mainnavigation'>
             <div className='menu'>
-     
-              <Link to="/dashboard/supervisor"
+              <Link
+                to="/dashboard/supervisor"
                 className={`dashboard_supervisor ${activeMenu === '/dashboard/supervisor' ? 'active' : ''}`}
                 onClick={() => this.handleMenuClick('/dashboard/supervisor')}
               >
                 <img className='icon_grievance_inactive' src={Icon_grievance_inactive} alt="grievance_inactive" />
                 <div>Grievances</div>
               </Link>
-
-                <Link to="/notificationSupervisor"
-                  className={`notificationuser ${activeMenu === 'notificationuser' ? 'active' : ''}`}
-                  onClick={() => this.handleMenuClick('notificationuser')}
-                >
-                  <img className='icon_notification_inactive' src={Icon_notification_inactive} alt="notification_inactive" />
-                  <div>Notification</div>
-              
-                </Link>
-           
+              <Link
+                to="/dashboard/supervisor/notifications"
+                className={`notificationuser ${activeMenu === '/dashboard/supervisor/notifications' ? 'active' : ''}`}
+                onClick={() => this.handleMenuClick('/dashboard/supervisor/notifications')}
+              >
+                <img className='icon_notification_inactive' src={Icon_notification_inactive} alt="notification_inactive" />
+                <div>Notification</div>
+              </Link>
             </div>
-
             <div className='bottom'>
-              
-              
-
-
               <div className='user_indicator'>
-                <div className='user_avatar'>U</div>
+                <div className='user_avatar'>S</div>
                 <div className='user_details'>
-                  <div className="user_name">User</div>
-                  <div className="user_email">user@gmail.com</div>
+                  <div className="user_name">Supervisor</div>
+                  <div className="user_email">Supervisor@gmail.com</div>
                 </div>
               </div>
             </div>
