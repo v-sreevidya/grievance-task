@@ -16,6 +16,7 @@ public class GrievanceDTO {
     private String address;
     private LocalDate createdAt;
     private LocalDateTime updatedAt;
+    private String assigneeId;
 
     // Getters and Setters
 
@@ -105,5 +106,13 @@ public class GrievanceDTO {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getAssigneeId() {
+        return assigneeId;
+    }
+
+    public void setAssigneeId(String assigneeId) {
+        this.assigneeId = assigneeId;
     }
 }
