@@ -3,6 +3,7 @@ package com.example.grievance.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -57,6 +58,26 @@ public class Grievance {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
+    @ManyToOne
+    @JoinColumn(name = "assignee_id", referencedColumnName = "id")
+    public Users assignee;
+
+    public void setAssigneeId(String assigneeId) {
+    }
+
+    public String getAssigneeId() {
+        return this.assignee != null ? this.assignee.getId().toString() : null;
+    }
+
+
+//    @Column(name = "assignee_id")
+//    private String assigneeId;
+
+
+
+
+
 
 }
 
