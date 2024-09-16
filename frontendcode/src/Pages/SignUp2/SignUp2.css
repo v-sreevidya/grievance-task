@@ -48,6 +48,10 @@
   padding: 20px 20px;
 }
 
+.box-signup2.assignee {
+  height: 545px;
+}
+
 
 .header {
   width: 100%;
@@ -84,6 +88,8 @@
 }
 
 .header-haveaccount, .header-signin{
+
+
   font-size: 10px;
 }
 .header-signin{
@@ -165,6 +171,25 @@
   border-radius: 5px;
   font-size: 12px;
 }
+/* DEPARTMENT */
+.form-department-signup2{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+
+.department-label-signup2{
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+.department-input-signup2{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
 
 .footer-signup{
   align-items: center;
