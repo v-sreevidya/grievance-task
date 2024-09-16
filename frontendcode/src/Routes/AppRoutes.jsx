@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SignIn from '../Pages/SignIn/SignIn';
@@ -9,12 +7,12 @@ import DashboardSupervisor from '../Pages/Supervisor/Dashboard/DashboardSupervis
 import Grievances from '../Pages/User/Grievances/Grievances';
 import UserDashboardLayout from '../Layout/UserDashboardLayout/UserDashboardLayout';
 import SupervisorDashboardLayout from '../Layout/SupervisorDashboardLayout/SupervisorDashboardLayout';
-import DashboardLayout from '../Layout/UserDashboardLayout/UserDashboardLayout';
+import AssigneeDashboardLayout from '../Layout/AssigneeDashboardLayout/AssigneeDashboardLayout';
 import GrievanceRegistration from '../Pages/User/GrievanceRegistration/GrievanceRegistration';
 import GrievanceDetails from '../Pages/Supervisor/EditGrievance/GrievanceDetails';
 import GrievanceDetailsAssignee from '../Pages/Assignee/EditGrievance/GrievanceDetailsAssignee';
 import NotificationUser from '../Pages/User/NotificationUser/NotificationUser';
-import NotificationSupervisor from '../Pages//Supervisor/NotificationSupervisor/NotificationSupervisor';
+import NotificationSupervisor from '../Pages/Supervisor/NotificationSupervisor/NotificationSupervisor';
 import DashboardAssignee from '../Pages/Assignee/DashBoard/DashboardAssignee';
 import NotificationAssignee from '../Pages/Assignee/NotificationAssignee/NotificationAssignee';
 
@@ -25,19 +23,21 @@ const AppRoutes = () => {
       <Route path="/" element={<SignIn />} />
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/signUp2" element={<SignUp2 />} />
+
       {/* SUPERVISOR */}
       <Route path="/dashboard/supervisor" element={<SupervisorDashboardLayout><DashboardSupervisor /></SupervisorDashboardLayout>} />
       <Route path="/dashboard/supervisor/edit/:ticketNumber" element={<SupervisorDashboardLayout><GrievanceDetails /></SupervisorDashboardLayout>} />
-      <Route path="/notificationSupervisor" element={<UserDashboardLayout><NotificationSupervisor/></UserDashboardLayout>} />
-      {/* ASSIGNEE */}
-      <Route path="/dashboard/assignee" element={<DashboardLayout><DashboardAssignee /></DashboardLayout>} />
-      <Route path="/dashboard/assignee/edit" element={<DashboardLayout><GrievanceDetailsAssignee /></DashboardLayout>} />
-      <Route path="/notificationAssignee" element={<UserDashboardLayout><NotificationAssignee/></UserDashboardLayout>} />
-      {/* USER */}
-      <Route path="/grievances" element={<UserDashboardLayout><Grievances /></UserDashboardLayout>} />
-      <Route path="/grievanceregistration" element={<UserDashboardLayout><GrievanceRegistration /></UserDashboardLayout>} />
-      <Route path="/notificationuser" element={<UserDashboardLayout><NotificationUser/></UserDashboardLayout>} />
+      <Route path="/dashboard/supervisor/notifications" element={<SupervisorDashboardLayout><NotificationSupervisor/></SupervisorDashboardLayout>} />
 
+      {/* ASSIGNEE */}
+      <Route path="/dashboard/assignee" element={<AssigneeDashboardLayout><DashboardAssignee /></AssigneeDashboardLayout>} />
+      <Route path="/dashboard/assignee/edit/:ticketNumber" element={<AssigneeDashboardLayout><GrievanceDetailsAssignee /></AssigneeDashboardLayout>} />
+      <Route path="/dashboard/assignee/notifications" element={<AssigneeDashboardLayout><NotificationAssignee/></AssigneeDashboardLayout>} />
+
+      {/* USER */}
+      <Route path="/user/grievances" element={<UserDashboardLayout><Grievances /></UserDashboardLayout>} />
+      <Route path="/user/grievanceregistration" element={<UserDashboardLayout><GrievanceRegistration /></UserDashboardLayout>} />
+      <Route path="/user/notifications" element={<UserDashboardLayout><NotificationUser/></UserDashboardLayout>} />
     </Routes>
   );
 }
