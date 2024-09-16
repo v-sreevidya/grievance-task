@@ -60,7 +60,6 @@ function NotificationUser() {
             &gt;
           </button>
         </div>
-          
       </div>
     </div>
     </div>
