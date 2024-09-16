@@ -1,24 +1,15 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import './DashboardAssignee.css'
 import Arrowdown from '../../../Assets/icons/Arrow drop down.png';
 import Pending from '../../../Assets/icons/status/pending.png';
 import Inprogress from '../../../Assets/icons/status/inprogress.png';
-import Open from '../../../Assets/icons/status/open.png'
-import Resolved from '../../../Assets/icons/status/resolved.png'
-import Closed from '../../../Assets/icons/status/closed.png'
+import Open from '../../../Assets/icons/status/open.png';
+import Resolved from '../../../Assets/icons/status/resolved.png';
+import Closed from '../../../Assets/icons/status/closed.png';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-const grievances = [
-  // { ticketNo: '123456', date: '2024-01-15', userid: '552361', assigneeid: '159863', category: '3', status: 'PENDING' },
-  // { ticketNo: '123457', date: '2024-01-16', userid: '910835', assigneeid: '369875', category: '2', status: 'OPEN' },
-  // { ticketNo: '123458', date: '2024-01-17', userid: '555883', assigneeid: '128796', category: '1', status: 'INPROGRESS' },
-  // { ticketNo: '123459', date: '2024-01-18', userid: '454679', assigneeid: '486259', category: '4', status: 'CLOSED' },
-  // { ticketNo: '123460', date: '2024-01-19', userid: '166245', assigneeid: '854137', category: '5', status: 'RESOLVED' },
-  // { ticketNo: '123434', date: '2024-01-15', userid: '166245', assigneeid: '124587', category: '2', status: 'PENDING' },
-  // { ticketNo: '123469', date: '2024-01-16', userid: '846592', assigneeid: '986574', category: '1', status: 'OPEN' },
-  // { ticketNo: '196534', date: '2024-01-15', userid: '166245', assigneeid: '124587', category: '2', status: 'PENDING' },
-];
 
 const getStatusIcon = (status) => {
   switch(status) {
@@ -39,14 +30,28 @@ const getStatusIcon = (status) => {
 };
 
 
-
-
-
 function DashboardAssignee(){
   
-  const [sortedGrievances, setSortedGrievances] = useState(grievances);
+  const [grievances, setGrievances] = useState([]);
+  const [sortedGrievances, setSortedGrievances] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
   const [hoveredGrievance, setHoveredGrievance] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const fetchGrievances = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/v1/grievances");
+        setGrievances(response.data);
+        setSortedGrievances(response.data);
+      } catch (error) {
+        console.error('Error fetching grievances:', error);
+      }
+    };
+
+    fetchGrievances();
+  }, []);
+
 
   const sortGrievances = (key) => {
     let direction = 'ascending';
@@ -69,22 +74,29 @@ function DashboardAssignee(){
   };
 
 
+  const handleMouseEnter = (ticketNumber) => {
+    setHoveredGrievance(ticketNumber);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredGrievance(null);
+  };
 
 
+  const handleEdit = (ticketNumber) => {
+    console.log(`Edit grievance with ticket number: ${ticketNumber}`);
+  };
 
+  const handleSearch = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
 
-const handleMouseEnter = (ticketNo) => {
-  setHoveredGrievance(ticketNo);
-};
+    const filteredGrievances = grievances.filter((grievance) =>
+      grievance.ticketNumber.toString().includes(value)
+    );
 
-const handleMouseLeave = () => {
-  setHoveredGrievance(null);
-};
-
-
-const handleEdit = (ticketNo) => {
-  console.log(`Edit grievance with ticket number: ${ticketNo}`);
-};
+    setSortedGrievances(filteredGrievances);
+  };
 
     return (
       <div className='grievance_main'>
@@ -97,7 +109,15 @@ const handleEdit = (ticketNo) => {
               <form>
                 <div>
                     <div className='form-search'>
-                      <input className='search-input' type="search" id="search" name="search" placeholder="Search for Ticket No" />
+                    <input
+                      className='search-input'
+                      type="search"
+                      id="search"
+                      name="search"
+                      placeholder="Search for Ticket No"
+                      value={searchTerm}
+                      onChange={handleSearch}
+                    />
                     </div> 
                 </div> 
               </form>
@@ -113,7 +133,7 @@ const handleEdit = (ticketNo) => {
         <div>
             <tr className="menu_bar">
               <div>
-                <th className="ticket_no_assignee" onClick={() => sortGrievances('ticketNo')}>
+                <th className="ticket_no_assignee" onClick={() => sortGrievances('ticketNumber')}>
                   TICKET NO 
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
@@ -127,7 +147,7 @@ const handleEdit = (ticketNo) => {
 
               <div>
                 <th className="user_id_assignee" onClick={() => sortGrievances('userid')}>
-                  USER ID
+                  USER NAME
                 <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown"/></span>
                 </th>
               </div>
@@ -149,52 +169,52 @@ const handleEdit = (ticketNo) => {
 
         </div>
         <div class="horizontal-line2" ></div>
-        <table className="grievance-table">
-                
-
-                  <tbody className="list">
-                    {sortedGrievances.map((grievance, ticketNo) => (
-                      <tr className='list_row' key={ticketNo}
-                      onMouseEnter={() => handleMouseEnter(grievance.ticketNo)}
-                      onMouseLeave={handleMouseLeave}
-                      >
-                        <div><td className='list_data_ticketNo_assignee'>{grievance.ticketNo}</td></div>
-                        <div><td className='list_data_date_assignee'>{grievance.date}</td></div>
-                        <div><td className='list_data_userid_assignee'>{grievance.userid}</td></div>
-                        <div><td className='list_data_category_assignee'>{grievance.category}</td></div>
-                        <div>
-                        <td className='list_data_status_assignee'>
-                          {hoveredGrievance === grievance.ticketNo ? (
-                            grievance.status === 'INPROGRESS' ? (
-                             
-                              <Link to ="/dashboard/assignee/edit">
-                                <button className='edit_button_assignee' onClick={() => handleEdit(grievance.ticketNo)}>EDIT</button>
-                              </Link>
+        <div className="grievance-table-container">
+            <table className="grievance-table">
+                    <tbody className="list">
+                      {sortedGrievances.map((grievance, ticketNumber) => (
+                        <tr className='list_row' key={ticketNumber}
+                        onMouseEnter={() => handleMouseEnter(grievance.ticketNumber)}
+                        onMouseLeave={handleMouseLeave}
+                        >
+                          <div><td className='list_data_ticketNumber_assignee'>{grievance.ticketNumber}</td></div>
+                          <div><td className='list_data_date_assignee'>{grievance.createdAt}</td></div>
+                          <div><td className='list_data_userid_assignee'>{grievance.name}</td></div>
+                          <div><td className='list_data_category_assignee'>{grievance.reason}</td></div>
+                          <div>
+                          <td className='list_data_status_assignee'>
+                            {hoveredGrievance === grievance.ticketNumber ? (
+                              grievance.status === 'INPROGRESS' ? (
+                              
+                                <Link to ={`/dashboard/assignee/edit/${grievance.ticketNumber}`}>
+                                  <button className='edit_button_assignee' onClick={() => handleEdit(grievance.ticketNumber)}>EDIT</button>
+                                </Link>
+                              ) : (
+                                <>
+                                  <span className='list_data_status_icon'>{getStatusIcon(grievance.status)}</span>
+                                  <span>{grievance.status}</span>
+                                </>
+                              )
                             ) : (
                               <>
                                 <span className='list_data_status_icon'>{getStatusIcon(grievance.status)}</span>
                                 <span>{grievance.status}</span>
                               </>
-                            )
-                          ) : (
-                            <>
-                              <span className='list_data_status_icon'>{getStatusIcon(grievance.status)}</span>
-                              <span>{grievance.status}</span>
-                            </>
-                          )}
-                        </td>
+                            )}
+                          </td>
 
-                        </div>
+                          </div>
 
-                      </tr>
-                    ))}
-                  </tbody>
+                        </tr>
+                      ))}
+                    </tbody>
 
-        </table> 
+            </table> 
+        </div>
         <div className='bottom_section'>
         <div class="horizontal-line3" ></div>
         <div className="pagination">
-          <button 
+          {/* <button 
             className="pagination-button">
             &lt;
           </button>
@@ -202,7 +222,7 @@ const handleEdit = (ticketNo) => {
           <button 
             className="pagination-button">
             &gt;
-          </button>
+          </button> */}
         </div>
         </div>
       </div>
