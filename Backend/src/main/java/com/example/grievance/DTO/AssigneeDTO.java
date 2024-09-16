@@ -1,18 +1,18 @@
 package com.example.grievance.DTO;
 
 public class AssigneeDTO {
-    private String assigneeId;
+    private int assigneeId;
     private String name;
     private String email;
     private String ticketNumber;
 
     // Getter for assigneeId
-    public String getAssigneeId() {
+    public int getAssigneeId() {
         return assigneeId;
     }
 
     // Setter for assigneeId
-    public void setAssigneeId(String assigneeId) {
+    public void setAssigneeId(int assigneeId) {
         this.assigneeId = assigneeId;
     }
 
