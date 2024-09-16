@@ -3,11 +3,10 @@ import './Grievances.css';
 import Arrowdown from '../../../Assets/icons/Arrow drop down.png';
 import Pending from '../../../Assets/icons/status/pending.png';
 import Inprogress from '../../../Assets/icons/status/inprogress.png';
-import Open from '../../../Assets/icons/status/open.png';
-import Resolved from '../../../Assets/icons/status/resolved.png';
-import Closed from '../../../Assets/icons/status/closed.png';
+import Open from '../../../Assets/icons/status/open.png'
+import Resolved from '../../../Assets/icons/status/resolved.png'
+import Closed from '../../../Assets/icons/status/closed.png'
 import { Link } from 'react-router-dom';
-import GrievanceRegistration from '../GrievanceRegistration/GrievanceRegistration';
 import axios from 'axios';
 
 function Grievances() {
@@ -28,9 +27,6 @@ function Grievances() {
   }, []);
 
   // Function to add a new grievance and update the dashboard
-  const addGrievance = (newGrievance) => {
-    setGrievances((prevGrievances) => [...prevGrievances, newGrievance]);
-  };
 
   
   const getStatusIcon = (status) => {
@@ -71,105 +67,77 @@ function Grievances() {
     setGrievances(sortedArray);
     setSortConfig({ key, direction });
   };
-
   return (
-    <div className="grievance_main">
+    <div className='grievance_main'>
       <div className="grievance_top">
-        <div className="welcome_note">
-          <div className="note1">Hi User,</div>
-          <div className="note2">Welcome to GRWM Store!</div>
+        <div className='welcome_note'>
+          <div className='note1'>Hi User,</div>
+          <div className='note2'>Welcome to GRWM Store!</div>
         </div>
         <div className="search">
           <form>
             <div>
-              <div className="form-search">
-                <input
-                  className="search-input"
-                  type="search"
-                  id="search"
-                  name="search"
-                  placeholder="Search for Ticket No"
-                />
-              </div>
-            </div>
+              <div className='form-search'>
+                <input className='search-input' type="search" id="search" name="search" placeholder="Search for Ticket No" />
+              </div> 
+            </div> 
           </form>
         </div>
       </div>
       
-      <div className="list_container_grievances">
+      <div className='list_container_grievances'>
         <div className="title_bar">
-          <div className="title">Grievances</div>
-          <Link to="/GrievanceRegistration">
-            <button>CREATE</button>
+          <div className='title'>Grievances</div>
+          <Link to="/user/grievanceregistration">
+            <button>ADD</button>
           </Link>
         </div>
-        
         <div className="horizontal-line"></div>
-
-        {/* Table for displaying grievances */}
-        
-        <table>
-          <thead>
-            <tr className="menu_bar">
-              <th className="ticketNumber" onClick={() => sortGrievances('ticketNumber')}>
-                TICKET NO
-                <span>
-                  <img className="arrow_down" src={Arrowdown} alt="Arrowdown" />
-                </span>
-              </th>
-              <th className="createdAt" onClick={() => sortGrievances('createdAt')}>
-                DATE
-                <span>
-                  <img className="arrow_down" src={Arrowdown} alt="Arrowdown" />
-                </span>
-              </th>
-              <th className="status" onClick={() => sortGrievances('status')}>
-                STATUS
-                <span>
-                  <img className="arrow_down" src={Arrowdown} alt="Arrowdown" />
-                </span>
-              </th>
-            </tr>
-          </thead>
-        </table>
-        
-
-        {/* <div className="horizontal-line2"></div> */}
-       
-        <div className="list_container_grievances">
-        <table className="grievance-table">
-          <tbody className="list">
-            {grievances.map((grievance) => (
-              <tr className="list_row" key={grievance.ticketNumber}>
-                <td className="list_data_ticketNumber">{grievance.ticketNumber}</td>
-                <td className="list_data_createdAt">{grievance.createdAt}</td>
-                <td className="list_data_status">
-                  <span className="list_data_status_icon">{getStatusIcon(grievance.status)}</span>
-                  <span>{grievance.status}</span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div>
+          <div className="menu_bar">
+            <div className="ticket_no" onClick={() => sortGrievances('ticketNumber')}>
+              TICKET NO 
+              <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
+            </div>
+            <div className="date" onClick={() => sortGrievances('date')}>
+              DATE 
+              <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
+            </div>
+            <div className="status" onClick={() => sortGrievances('status')}>
+              STATUS 
+              <span><img className="arrow_down" src={Arrowdown} alt="Arrowdown" /></span>
+            </div>
+          </div>
         </div>
-        
-
-        <div className="bottom_section">
+        <div className="horizontal-line2"></div>
+        <div className="grievance-table-container">
+          <table className="grievance-table">
+            <tbody className="list">
+              {grievances.map((grievance, ticketNumber) => (
+                <tr className='list_row' key={ticketNumber}>
+                  <td className='list_data_ticketNumber'>{grievance.ticketNumber}</td>
+                  <td className='list_data_date'>{grievance.createdAt}</td>
+                  <td className='list_data_status_grievance'>
+                    <span className='list_data_status_icon'>{getStatusIcon(grievance.status)}</span>
+                    <span>{grievance.status}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className='bottom_section'>
           <div className="horizontal-line3"></div>
-          
-          {/* <div className="pagination">
-            <button className="pagination-button">&lt;</button>
+          <div className="pagination">
+            {/* <button className="pagination-button">&lt;</button>
             <span className="pagination-info">1</span>
-            <button className="pagination-button">&gt;</button>
-          </div> */}
+            <button className="pagination-button">&gt;</button> */}
+          </div>
         </div>
       </div>
-     
-
       {/* Grievance Registration component */}
-      <GrievanceRegistration addGrievance={addGrievance} />
+      
     </div>
-     
   );
 }
 
