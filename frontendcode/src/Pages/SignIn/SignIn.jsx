@@ -30,11 +30,8 @@ function SignIn() {
         setErrors({ general: 'Invalid role' });
       }
     } catch (error) {
-      if (error.response) {
-        setErrors(error.response.data);
-      } else {
-        console.error('Error:', error.message);
-      }
+      console.error('Error:', error);
+      setErrors({ general: 'Invalid credentials' });
     }
   };
 
