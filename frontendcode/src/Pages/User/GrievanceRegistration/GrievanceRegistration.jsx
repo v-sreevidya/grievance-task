@@ -5,32 +5,37 @@ import { Link } from 'react-router-dom';
 
 function GrievanceRegistration() {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
-    const [ticketNumber, setTicketNumber] = useState(""); 
+    const [ticketNumber, setTicketNumber] = useState("");
     const [formData, setFormData] = useState({
         username: "",
         email: "",
         address: "",
         phoneNumber: "",
-        reason: "", 
+        reason: "",
         description: "",
-        invoice: null,
         invoiceDate: ""
     });
 
+    const [validationErrors, setValidationErrors] = useState({});
+
     const handleClick = async () => {
-        
+        const errors = validateForm();
+        if (Object.keys(errors).length > 0) {
+            setValidationErrors(errors);
+            return;
+        }
+
         const randomTicketNumber = `${Math.floor(Math.random() * 1000000)}`;
 
-        
         const dataToSend = {
             name: formData.username,
             email: formData.email,
-            reason: formData.reason, 
+            reason: formData.reason,
             description: formData.description,
             phoneNumber: formData.phoneNumber,
             address: formData.address,
             invoiceDate: formData.invoiceDate,
-            ticketNumber: randomTicketNumber 
+            ticketNumber: randomTicketNumber
         };
 
         try {
@@ -44,15 +49,28 @@ function GrievanceRegistration() {
 
             if (response.ok) {
                 const result = await response.json();
-                console.log(result); 
-                setTicketNumber(randomTicketNumber); 
-                setIsPopupVisible(true); 
+                console.log(result);
+                setTicketNumber(randomTicketNumber);
+                setIsPopupVisible(true);
             } else {
-                console.error('Failed to submit grievance'); 
+                console.error('Failed to submit grievance');
             }
         } catch (error) {
             console.error('Error:', error);
         }
+    };
+
+    const validateForm = () => {
+        const errors = {};
+        const requiredFields = ['username', 'email', 'address', 'phoneNumber', 'reason', 'description', 'invoiceDate'];
+
+        requiredFields.forEach(field => {
+            if (!formData[field]) {
+                errors[field] = 'This field is required';
+            }
+        });
+
+        return errors;
     };
 
     const closePopup = () => {
@@ -64,6 +82,10 @@ function GrievanceRegistration() {
         setFormData({
             ...formData,
             [name]: value
+        });
+        setValidationErrors({
+            ...validationErrors,
+            [name]: ''
         });
     };
 
@@ -88,21 +110,57 @@ function GrievanceRegistration() {
                             <div className='registration-form-row'>
                                 <div className="registration-name">
                                     <label className="registration-name-label">Name</label>
-                                    <input className="registration-name-input" type="text" id="username" name="username" placeholder="Enter Name" value={formData.username} onChange={handleInputChange} />
+                                    <input
+                                        className="registration-name-input"
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        placeholder={validationErrors.username || "Enter Name"}
+                                        style={validationErrors.username ? { borderColor: 'red' } : {}}
+                                        value={formData.username}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                                 <div className="registration-email">
                                     <label className="registration-email-label">Email Address</label>
-                                    <input className="registration-email-input" type="text" id="email" name="email" placeholder="Enter Email Address" value={formData.email} onChange={handleInputChange} />
+                                    <input
+                                        className="registration-email-input"
+                                        type="text"
+                                        id="email"
+                                        name="email"
+                                        placeholder={validationErrors.email || "Enter Email Address"}
+                                        style={validationErrors.email ? { borderColor: 'red' } : {}}
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                             </div>
                             <div className='registration-form-row'>
                                 <div className="registration-address">
                                     <label className="registration-address-label">Address</label>
-                                    <input className="registration-address-input" type="text" id="address" name="address" placeholder="Enter Address" value={formData.address} onChange={handleInputChange} />
+                                    <input
+                                        className="registration-address-input"
+                                        type="text"
+                                        id="address"
+                                        name="address"
+                                        placeholder={validationErrors.address || "Enter Address"}
+                                        style={validationErrors.address ? { borderColor: 'red' } : {}}
+                                        value={formData.address}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                                 <div className="registration-phoneNo">
                                     <label className="registration-phoneNo-label">Phone Number</label>
-                                    <input className="registration-phoneNo-input" type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" value={formData.phoneNumber} onChange={handleInputChange} />
+                                    <input
+                                        className="registration-phoneNo-input"
+                                        type="text"
+                                        id="phoneNumber"
+                                        name="phoneNumber"
+                                        placeholder={validationErrors.phoneNumber || "Enter Phone Number"}
+                                        style={validationErrors.phoneNumber ? { borderColor: 'red' } : {}}
+                                        value={formData.phoneNumber}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                             </div>
                             <div className='registration-form-row'>
@@ -112,6 +170,7 @@ function GrievanceRegistration() {
                                         className='registration-reason-input'
                                         id="reason"
                                         name="reason"
+                                        style={validationErrors.reason ? { borderColor: 'red' } : {}}
                                         value={formData.reason}
                                         onChange={handleInputChange}
                                     >
@@ -125,14 +184,32 @@ function GrievanceRegistration() {
                                 </div>
                                 <div className="registration-description">
                                     <label className="registration-description-label">Problem Description</label>
-                                    <input className="registration-description-input" type="text" id="description" name="description" placeholder="Enter Description" value={formData.description} onChange={handleInputChange} />
+                                    <input
+                                        className="registration-description-input"
+                                        type="text"
+                                        id="description"
+                                        name="description"
+                                        placeholder={validationErrors.description || "Enter Description"}
+                                        style={validationErrors.description ? { borderColor: 'red' } : {}}
+                                        value={formData.description}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                             </div>
                             <div className='registration-form-row'>
                                 <div className="registration-invoiceDate">
                                     <label className="registration-invoiceDate-label">Invoice Date</label>
                                     <div className="calender-input">
-                                        <input className="registration-invoiceDate-input" type="date" id="invoiceDate" name="invoiceDate" value={formData.invoiceDate} onChange={handleInputChange} />
+                                        <input
+                                            className="registration-invoiceDate-input"
+                                            type="date"
+                                            id="invoiceDate"
+                                            name="invoiceDate"
+                                            placeholder={validationErrors.invoiceDate || "Enter Invoice Date"}
+                                            style={validationErrors.invoiceDate ? { borderColor: 'red' } : {}}
+                                            value={formData.invoiceDate}
+                                            onChange={handleInputChange}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -140,34 +217,34 @@ function GrievanceRegistration() {
                     </div>
                     <div className="horizontal-line"></div>
                     <div className="buttons_user">
-                    <div className="submit">
-                        <div className={`app-container ${isPopupVisible ? "blurred" : ""}`}>
-                            <button className="submit-button-user" onClick={handleClick}>ADD</button>
+                        <div className="submit">
+                            <div className={`app-container ${isPopupVisible ? "blurred" : ""}`}>
+                                <button className="submit-button-user" onClick={handleClick}>ADD</button>
 
-                            {isPopupVisible && (
-                                <div className="popup-overlay" onClick={closePopup}>
-                                    <div className="popup" onClick={(e) => e.stopPropagation()}>
-                                        <img src={Logo} alt="Logo" className="popup-logo" />
-                                        <h1>Thank you!</h1>
-                                        <p>Your help is on its way.</p>
-                                        <div className="ticket">
-                                            <div className='ticket-heading'>Your Ticket No :</div>
-                                            <span className="ticket-number">{ticketNumber}</span>
+                                {isPopupVisible && (
+                                    <div className="popup-overlay" onClick={closePopup}>
+                                        <div className="popup" onClick={(e) => e.stopPropagation()}>
+                                            <img src={Logo} alt="Logo" className="popup-logo" />
+                                            <h1>Thank you!</h1>
+                                            <p>Your help is on its way.</p>
+                                            <div className="ticket">
+                                                <div className='ticket-heading'>Your Ticket No :</div>
+                                                <span className="ticket-number">{ticketNumber}</span>
+                                            </div>
+                                            <p className="note">( PLEASE NOTE FOR FUTURE PURPOSE )</p>
+                                            <Link to="/user/grievances">
+                                                <button onClick={closePopup} className="done-button">Done</button>
+                                            </Link>
                                         </div>
-                                        <p className="note">( PLEASE NOTE FOR FUTURE PURPOSE )</p>
-                                        <Link to="/user/grievances">
-                                        <button onClick={closePopup} className="done-button">Done</button>
-                                        </Link>
                                     </div>
-                                </div>
-                            )}
+                                )}
+                            </div>
                         </div>
-                    </div>
-                    <div className='close_user'>
-                    <Link to ="/user/grievances">
-                        <button className='close_button_user' type="submit">CLOSE</button>
-                    </Link>
-                    </div>
+                        <div className='close_user'>
+                            <Link to="/user/grievances">
+                                <button className='close_button_user' type="submit">CLOSE</button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
