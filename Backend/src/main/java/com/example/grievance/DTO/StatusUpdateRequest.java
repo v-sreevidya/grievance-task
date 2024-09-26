@@ -4,7 +4,7 @@ public class StatusUpdateRequest {
 
     private String status;
 
-    // Getter and Setter
+    
 
     public String getStatus() {
         return status;
