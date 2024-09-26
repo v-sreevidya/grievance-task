@@ -6,7 +6,7 @@ import com.example.grievance.DTO.StatusUpdateRequest;
 import com.example.grievance.Entity.Grievance;
 import com.example.grievance.Entity.Users;
 import com.example.grievance.Service.GrievanceService;
-import com.example.grievance.repository.UserRepository; // Ensure UserRepository is imported
+import com.example.grievance.repository.UserRepository; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ public class GrievanceController {
     private GrievanceService grievanceService;
 
     @Autowired
-    private UserRepository userRepository;  // Inject UserRepository
+    private UserRepository userRepository;  
 
     @PostMapping("/create")
     public ResponseEntity<GrievanceDTO> createGrievance(@RequestBody GrievanceDTO grievanceDTO) {
@@ -84,7 +84,7 @@ public class GrievanceController {
 
     @GetMapping("/assignees")
     public List<Users> getAssignees() {
-        return userRepository.findAll();  // Fetch all users or customize as needed
+        return userRepository.findAll();  
     }
 
     @PutMapping("/{ticketNumber}")
@@ -103,15 +103,15 @@ public class GrievanceController {
     @PutMapping("/{ticketNumber}/assign")
     public ResponseEntity<GrievanceDTO> allotAssignee(
             @PathVariable String ticketNumber,
-            @RequestBody AssigneeDTO request) {  // Use AssigneeDTO to capture assignee data
+            @RequestBody AssigneeDTO request) {  
 
         Grievance updatedGrievance = grievanceService.assignGrievance(ticketNumber, request.getAssigneeId());
 
         if (updatedGrievance != null) {
             GrievanceDTO updatedGrievanceDTO = convertToDTO(updatedGrievance);
-            return ResponseEntity.ok(updatedGrievanceDTO);  // Return updated grievance data as DTO
+            return ResponseEntity.ok(updatedGrievanceDTO); 
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // Handle case where grievance is not found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  
         }
     }
 
@@ -122,7 +122,7 @@ public class GrievanceController {
         return ResponseEntity.noContent().build();
     }
 
-    // Conversion methods between DTO and Entity
+   
 
     private Grievance convertToEntity(GrievanceDTO grievanceDTO) {
         Grievance grievance = new Grievance();
