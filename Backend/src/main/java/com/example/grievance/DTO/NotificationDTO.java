@@ -19,7 +19,7 @@ public class NotificationDTO {
     public NotificationDTO() {
     }
 
-    // Getters and Setters
+    
 
     public String getTicketNumber() {
         return ticketNumber;
