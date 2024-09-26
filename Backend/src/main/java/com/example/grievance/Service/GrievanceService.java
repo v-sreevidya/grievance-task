@@ -1,9 +1,9 @@
 package com.example.grievance.Service;
 
 import com.example.grievance.Entity.Grievance;
-import com.example.grievance.Entity.Users;  // Ensure Users entity is imported
+import com.example.grievance.Entity.Users;  
 import com.example.grievance.repository.GrievanceRepository;
-import com.example.grievance.repository.UserRepository;  // Ensure UserRepository is imported
+import com.example.grievance.repository.UserRepository;  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +20,14 @@ public class GrievanceService {
     private GrievanceRepository grievanceRepository;
 
     @Autowired
-    private UserRepository userRepository;  // Inject UserRepository
+    private UserRepository userRepository;  
 
-    // Save a grievance
+    // Save  grievance
     public Grievance saveGrievance(Grievance grievance) {
         return grievanceRepository.save(grievance);
     }
 
-    // Create a new grievance with a specific status and ticket number
+    // Create new grievance with specific status and ticket number
     public Grievance createGrievance(Grievance grievance) {
         grievance.setCreatedAt(LocalDate.now());
         grievance.setUpdatedAt(LocalDateTime.now());
@@ -43,17 +43,17 @@ public class GrievanceService {
         return grievanceRepository.save(grievance);
     }
 
-    // Retrieve all grievances
+   
     public List<Grievance> getAllGrievances() {
         return grievanceRepository.findAll();
     }
 
-    // Retrieve a grievance by its ticket number
+   
     public Optional<Grievance> getGrievanceByTicketNumber(String ticketNumber) {
         return grievanceRepository.findByTicketNumber(ticketNumber);
     }
 
-    // Update an existing grievance
+    
     public Grievance updateGrievance(String ticketNumber, Grievance grievanceDetails) {
         Grievance grievance = grievanceRepository.findByTicketNumber(ticketNumber)
                 .orElseThrow(() -> new RuntimeException("Grievance not found"));
@@ -76,7 +76,7 @@ public class GrievanceService {
         return grievanceRepository.save(grievance);
     }
 
-    // Update the status of a grievance
+    
     public Grievance updateGrievanceStatus(String ticketNumber, String status) {
         Grievance grievance = grievanceRepository.findByTicketNumber(ticketNumber)
                 .orElseThrow(() -> new RuntimeException("Grievance not found"));
@@ -108,23 +108,24 @@ public class GrievanceService {
         Users assignee = userRepository.findById(assigneeId)
                 .orElseThrow(() -> new RuntimeException("Assignee not found"));
 
-        grievance.setAssignee(assignee);  // Assuming `assignee` field exists in Grievance entity
+        grievance.setAssignee(assignee);  
         grievance.setUpdatedAt(LocalDateTime.now());
         return grievanceRepository.save(grievance);
     }
+    //Assigns grievance to an assignee
     public Grievance assignGrievance(String ticketNumber, String assigneeId) {
         Optional<Grievance> grievanceOpt = grievanceRepository.findByTicketNumber(ticketNumber);
         if (grievanceOpt.isPresent()) {
             Grievance grievance = grievanceOpt.get();
-            grievance.setAssigneeId(assigneeId); // Set the new assigneeId
-            grievance.setStatus("INPROGRESS");  // Update status if needed
-            return grievanceRepository.save(grievance);  // Save the updated grievance
+            grievance.setAssigneeId(assigneeId);
+            grievance.setStatus("INPROGRESS");  
+            return grievanceRepository.save(grievance); 
         }
         return null;
     }
 
 
-    // Delete a grievance by its ticket number
+    
     public void deleteGrievance(String ticketNumber) {
         grievanceRepository.deleteByTicketNumber(ticketNumber);
     }
