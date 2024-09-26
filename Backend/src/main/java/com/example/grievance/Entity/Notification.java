@@ -27,7 +27,7 @@ public class Notification {
         this.sentAt = LocalDateTime.now();
     }
 
-    // Getters and Setters
+    
     public String getTicketNumber() {
         return ticketNumber;
     }
