@@ -6,17 +6,17 @@ public class AssigneeDTO {
     private String email;
     private String ticketNumber;
 
-    // Getter for assigneeId
+    
     public int getAssigneeId() {
         return assigneeId;
     }
 
-    // Setter for assigneeId
+   
     public void setAssigneeId(int assigneeId) {
         this.assigneeId = assigneeId;
     }
 
-    // Getters and setters for the other fields
+    
     public String getName() {
         return name;
     }
