@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 public class GrievanceDTO {
 
-//    private int id;
-    private String ticketNumber;  // Added ticketNumber field
+
+    private String ticketNumber;  
     private String name;
     private String email;
     private String reason;
@@ -18,21 +18,13 @@ public class GrievanceDTO {
     private LocalDateTime updatedAt;
     private String assigneeId;
 
-    // Getters and Setters
+  
 
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-
-    public String getTicketNumber() {  // Getter for ticketNumber
+    public String getTicketNumber() {  
         return ticketNumber;
     }
 
-    public void setTicketNumber(String ticketNumber) {  // Setter for ticketNumber
+    public void setTicketNumber(String ticketNumber) {  
         this.ticketNumber = ticketNumber;
     }
 
