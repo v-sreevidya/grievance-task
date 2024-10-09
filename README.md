@@ -1,4 +1,4 @@
-****Grievance Management System****
+<h3 style="text-align:center;">Grievance Management System</h3>
 
 **Overview**
 
@@ -7,20 +7,21 @@ It allows users to add new grievances and get their status updated with each pro
 The application uses React.js for the frontend, Java and SpringBoot for the backend, and PostgreSQL for the database.
   
 
-**Features**  
+**Features**
+
 1. Authentication(signin and signup)
 2. Submitting grievances with detailed discription by the user
 3. Admin dashboard for managing user grievances and assigning assignees
 4. Assignee dashboard for resolving the issues
 5. Status updation on each stage
 
-**Contributions** <br> 
+**Contributions**
+
 Member 1: Arjun Sajeev  
 1. Developed the frontend components for user, supervisor and assignee, along with the authentication page.
 2. Implemented responsive design features to enhance user experience.
 3. Handled frontend debugging.  
 4. Committed the final error free project.
-
 
 Member 2: Sreevidya V  
 1. Developed the backend functionalities for user and supervisor management.
