@@ -1,7 +1,8 @@
 ****Grievance Management System****
 
 **Overview**
-<br>The Grievance Management System is a web application that designed for reporting grievances faced in an online shopping website.  
+
+The Grievance Management System is a web application that designed for reporting grievances faced in an online shopping website.  
 It allows users to add new grievances and get their status updated with each process done by the supervisor and the assignee.  
 The application uses React.js for the frontend, Java and SpringBoot for the backend, and PostgreSQL for the database.
   
