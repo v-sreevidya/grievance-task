@@ -84,7 +84,9 @@ public class GrievanceController {
 
     @GetMapping("/assignees")
     public List<Users> getAssignees() {
-        return userRepository.findAll();  
+        return userRepository.findByRole("assignee");
+
+
     }
 
     @PutMapping("/{ticketNumber}")

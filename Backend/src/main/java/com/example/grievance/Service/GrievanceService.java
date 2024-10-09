@@ -3,7 +3,8 @@ package com.example.grievance.Service;
 import com.example.grievance.Entity.Grievance;
 import com.example.grievance.Entity.Users;  
 import com.example.grievance.repository.GrievanceRepository;
-import com.example.grievance.repository.UserRepository;  
+import com.example.grievance.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -125,8 +126,9 @@ public class GrievanceService {
     }
 
 
-    
+    @Transactional
     public void deleteGrievance(String ticketNumber) {
+
         grievanceRepository.deleteByTicketNumber(ticketNumber);
     }
 
