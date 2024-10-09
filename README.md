@@ -1,13 +1,13 @@
-<h3 style="text-align:center;">Grievance Management System</h3>
+<h2 style="text-align:center; font-weight:bold;">Grievance Management System</h2>
 
-<u>Overview</u>
+**Overview**
 
 The Grievance Management System is a web application that designed for reporting grievances faced in an online shopping website.  
 It allows users to add new grievances and get their status updated with each process done by the supervisor and the assignee.  
 The application uses React.js for the frontend, Java and SpringBoot for the backend, and PostgreSQL for the database.
   
 
-<u>Features</u>
+**Features**
 
 1. Authentication(signin and signup)
 2. Submitting grievances with detailed discription by the user
@@ -15,7 +15,7 @@ The application uses React.js for the frontend, Java and SpringBoot for the back
 4. Assignee dashboard for resolving the issues
 5. Status updation on each stage
 
-<u>Contributions</u>
+**Contributions**
 
 Member 1: Arjun Sajeev  
 1. Developed the frontend components for user, supervisor and assignee, along with the authentication page.
