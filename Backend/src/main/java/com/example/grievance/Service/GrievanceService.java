@@ -91,18 +91,10 @@ public class GrievanceService {
         }
     }
 
-//    public void assignGrievance(String ticketNumber, String assigneeId) {
-//        Grievance grievance = grievanceRepository.findByTicketNumber(ticketNumber);
-//        if (grievance != null) {
-//            grievance.setAssigneeId(Integer.parseInt(assigneeId)); // assuming assigneeId is int
-//            grievanceRepository.save(grievance);
-//        } else {
-//            throw new EntityNotFoundException("Grievance not found");
-//        }
-//    }
 
 
-    public Grievance assignGrievance(String ticketNumber, Integer assigneeId) {
+
+    public Grievance assignGrievance(String ticketNumber, UUID assigneeId) {
         Grievance grievance = grievanceRepository.findByTicketNumber(ticketNumber)
                 .orElseThrow(() -> new RuntimeException("Grievance not found"));
 

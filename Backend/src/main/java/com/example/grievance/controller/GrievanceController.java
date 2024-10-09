@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -54,8 +55,8 @@ public class GrievanceController {
 //    }
 
     @PostMapping("/{ticketNumber}/assign")
-    public ResponseEntity<String> assignGrievance(@PathVariable String ticketNumber, @RequestBody Map<String, Integer> request) {
-        Integer assigneeId = request.get("assigneeId");
+    public ResponseEntity<String> assignGrievance(@PathVariable String ticketNumber, @RequestBody Map<String, UUID> request) {
+        UUID assigneeId = request.get("assigneeId");
         try {
             grievanceService.assignGrievance(ticketNumber, assigneeId);
             return ResponseEntity.ok("Assignee updated successfully");

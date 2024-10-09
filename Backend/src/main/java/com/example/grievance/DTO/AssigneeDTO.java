@@ -1,18 +1,20 @@
 package com.example.grievance.DTO;
 
+import java.util.UUID;
+
 public class AssigneeDTO {
-    private int assigneeId;
+    private UUID assigneeId;
     private String name;
     private String email;
     private String ticketNumber;
 
     
-    public int getAssigneeId() {
+    public UUID getAssigneeId() {
         return assigneeId;
     }
 
    
-    public void setAssigneeId(int assigneeId) {
+    public void setAssigneeId(UUID assigneeId) {
         this.assigneeId = assigneeId;
     }
 

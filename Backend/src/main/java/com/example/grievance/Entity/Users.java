@@ -3,6 +3,8 @@ package com.example.grievance.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Entity
 @Data
 @Table(name = "users", uniqueConstraints = {
@@ -10,8 +12,8 @@ import lombok.Data;
 })
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     private String name;
     private String email;

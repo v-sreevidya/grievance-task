@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -27,15 +28,15 @@ public class UserService {
         return List.of();
     }
 
-    public Users getUserById(Integer id) {
+    public Users getUserById(UUID id) {
         return null;
     }
 
-    public Users updateUser(Integer id, Users user) {
+    public Users updateUser(UUID id, Users user) {
         return null;
     }
 
-    public void deleteUser(Integer id) {
+    public void deleteUser(UUID id) {
     }
 
     public Users getUserByUsernameAndPassword(String username, String password) {
