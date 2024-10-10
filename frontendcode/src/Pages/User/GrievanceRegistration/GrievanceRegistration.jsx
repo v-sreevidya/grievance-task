@@ -16,7 +16,7 @@ function GrievanceRegistration() {
         invoiceDate: ""
     });
 
-    const [validationErrors, setValidationErrors] = useState({});
+    const [validationErrors, setValidationErrors] = useState([]);
 
     const handleClick = async () => {
         const errors = validateForm();
@@ -28,13 +28,8 @@ function GrievanceRegistration() {
         const randomTicketNumber = `${Math.floor(Math.random() * 1000000)}`;
 
         const dataToSend = {
+            ...formData,
             name: formData.username,
-            email: formData.email,
-            reason: formData.reason,
-            description: formData.description,
-            phoneNumber: formData.phoneNumber,
-            address: formData.address,
-            invoiceDate: formData.invoiceDate,
             ticketNumber: randomTicketNumber
         };
 
@@ -79,14 +74,14 @@ function GrievanceRegistration() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setFormData({
-            ...formData,
+        setFormData(prevFormData => ({
+            ...prevFormData,
             [name]: value
-        });
-        setValidationErrors({
-            ...validationErrors,
+        }));
+        setValidationErrors(prevErrors => ({
+            ...prevErrors,
             [name]: ''
-        });
+        }));
     };
 
     return (

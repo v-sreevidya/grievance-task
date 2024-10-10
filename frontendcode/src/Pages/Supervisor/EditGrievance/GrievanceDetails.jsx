@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import './GrievanceDetails.css';
 import axios from 'axios';
@@ -6,6 +5,8 @@ import { Link, useParams } from 'react-router-dom';
 
 function GrievanceDetails() {
   const { ticketNumber } = useParams();
+  
+  // Initialize grievanceDetails as null (object)
   const [grievanceDetails, setGrievanceDetails] = useState(null);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [selectedAssignee, setSelectedAssignee] = useState('');
@@ -15,7 +16,14 @@ function GrievanceDetails() {
     const fetchGrievance = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/api/v1/grievances/${ticketNumber}`);
-        setGrievanceDetails(response.data);
+        console.log('Grievance API Response:', response.data); // Log response
+
+        // Set grievanceDetails to the 'data' object from the response
+        if (response.data && response.data.data) {
+          setGrievanceDetails(response.data.data);
+        } else {
+          console.error('No grievance data found in the response.');
+        }
       } catch (error) {
         console.error('Error fetching grievance data:', error);
       }
@@ -28,7 +36,24 @@ function GrievanceDetails() {
     const fetchAssignees = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/v1/grievances/assignees');
-        setAssignees(response.data.filter(assignee => assignee.role === 'ASSIGNEE'));
+        console.log('Assignees API Response:', response.data); // Inspect the structure
+
+        let assigneesArray = [];
+
+        if (Array.isArray(response.data)) {
+          // Scenario 1: response.data is an array
+          assigneesArray = response.data;
+        } else if (response.data && Array.isArray(response.data.data)) {
+          // Scenario 2: response.data.data is the array
+          assigneesArray = response.data.data;
+        } else {
+          console.error('Unexpected assignees response format:', response.data);
+        }
+
+        // Filter assignees with role 'ASSIGNEE'
+        const filteredAssignees = assigneesArray.filter(assignee => assignee.role === 'ASSIGNEE');
+
+        setAssignees(filteredAssignees);
       } catch (error) {
         console.error('Error fetching assignees:', error);
       }
@@ -36,38 +61,37 @@ function GrievanceDetails() {
 
     fetchAssignees();
   }, []);
-  
 
   const handleSubmit = async () => {
     try {
-      // Update the assignee and status
+      // Update the assignee
       await axios.put(`http://localhost:8080/api/v1/grievances/${ticketNumber}/assign`, {
         assigneeId: selectedAssignee,
       });
       
-      // Optionally, refresh the grievance details to reflect the updated status and assignee
+      // Refresh the grievance details to reflect the updated assignee
       const response = await axios.get(`http://localhost:8080/api/v1/grievances/${ticketNumber}`);
-      setGrievanceDetails(response.data);
       
-      console.log('Assignee and status updated successfully');
+      if (response.data && response.data.data) {
+        setGrievanceDetails(response.data.data);
+      } else {
+        console.error('No grievance data found after update.');
+      }
+      
+      console.log('Assignee updated successfully');
     } catch (error) {
       console.error('Error submitting grievance:', error);
     }
-  
-  
+
     try {
-      // Send PUT request to update the status to "OPEN"
+      
       await axios.put(`http://localhost:8080/api/v1/grievances/${ticketNumber}/status`, { status: 'INPROGRESS' });
   
-      
-      
       console.log(`Grievance ${ticketNumber} status changed to INPROGRESS`);
     } catch (error) {
       console.error('Error updating grievance status:', error);
     }
   };
-  
-  
 
   const closePopup = () => {
     setIsPopupVisible(false);
@@ -91,7 +115,8 @@ function GrievanceDetails() {
           </div>
           <div className="horizontal-line"></div>
           <div className="rows_details">
-            {grievanceDetails && (
+            {/* Check if grievanceDetails is available */}
+            {grievanceDetails ? (
               <>
                 <div className="row_details">
                   <div className="name_details">
@@ -150,24 +175,26 @@ function GrievanceDetails() {
                       <option value="">Select Assignee</option>
                       {assignees.map((assignee) => (
                         <option key={assignee.id} value={assignee.id}>
-                          {assignee.id} - {assignee.department}
+                          {assignee.name} - {assignee.department}
                         </option>
                       ))}
                     </select>
                   </div>
                 </div>
               </>
+            ) : (
+              <div>No grievance details found.</div>
             )}
             <div className="horizontal-line"></div>
           </div>
 
           <div className="buttons_assignee">
             <div className="submit_assignee">
-            <Link to="/dashboard/supervisor">
-              <button className="submit_button" type="button" onClick={handleSubmit}>
-                SUBMIT
-              </button>
-            </Link>
+              <Link to="/dashboard/supervisor">
+                <button className="submit_button" type="button" onClick={handleSubmit}>
+                  SUBMIT
+                </button>
+              </Link>
             </div>
             <div className="decline_assignee">
               <div>
@@ -205,4 +232,3 @@ function GrievanceDetails() {
 }
 
 export default GrievanceDetails;
-

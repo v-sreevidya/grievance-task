@@ -45,7 +45,7 @@ public class AuthController {
             userData.put("username", user.getUsername());
             userData.put("email", user.getEmail());
             userData.put("phonenumber",user.getPhoneNumber());
-
+            userData.put("role", user.getRole());
             response.put("data", userData);
             response.put("timestamp", LocalDateTime.now());
             return new ResponseEntity<>(response, HttpStatus.OK);

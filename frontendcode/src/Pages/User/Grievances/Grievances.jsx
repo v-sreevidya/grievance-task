@@ -16,7 +16,14 @@ function Grievances() {
   const fetchGrievances = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/v1/grievances');
-      setGrievances(response.data);
+      console.log('API Response:', response.data);
+      const grievances = response.data.data;
+      if (Array.isArray(grievances)) {
+        setGrievances(grievances);
+      } 
+      else {
+        console.error('Expected an array of grievances:', grievances);
+      }
     } catch (error) {
       console.error('Error fetching grievances:', error);
     }
@@ -26,7 +33,7 @@ function Grievances() {
     fetchGrievances(); 
   }, []);
 
-  // Function to add a new grievance and update the dashboard
+  
 
   
   const getStatusIcon = (status) => {

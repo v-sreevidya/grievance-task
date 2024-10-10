@@ -17,9 +17,11 @@ function SignIn() {
         username,
         password
       });
-      const user = response.data;
-
-      // Redirect based on user role
+      console.log(response.data);
+      const user = response.data.data;
+      
+      console.log('User role:', user.role);
+      
       if (user.role === 'USER') {
         navigate('/user/grievances');
       } else if (user.role === 'SUPERVISOR') {
@@ -27,6 +29,7 @@ function SignIn() {
       } else if (user.role === 'ASSIGNEE') {
         navigate('/dashboard/assignee');
       } else {
+        console.log('User role:', user.role);
         setErrors({ general: 'Invalid role' });
       }
     } catch (error) {

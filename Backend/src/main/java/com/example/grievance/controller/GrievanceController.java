@@ -72,7 +72,7 @@ public class GrievanceController {
 
     @GetMapping("/assignees")
     public ResponseEntity<Map<String, Object>> getAssignees() {
-        List<Users> assignees = userRepository.findByRole("assignee");
+        List<Users> assignees = userRepository.findByRole("ASSIGNEE");
         List<ResponseDTO> responseDTOs = assignees.stream()
                 .map(this::convertToResponseDTO)
                 .collect(Collectors.toList());
