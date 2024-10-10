@@ -1,7 +1,7 @@
 package com.example.grievance.DTO;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 public class GrievanceDTO {
 
@@ -15,7 +15,7 @@ public class GrievanceDTO {
     private String status;
     private String address;
     private LocalDate createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDate updatedAt;
     private String assigneeId;
 
   
@@ -92,11 +92,11 @@ public class GrievanceDTO {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 

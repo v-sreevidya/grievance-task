@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -23,7 +23,7 @@ public class GrievanceService {
     @Autowired
     private UserRepository userRepository;  
 
-    // Save  grievance
+
     public Grievance saveGrievance(Grievance grievance) {
         return grievanceRepository.save(grievance);
     }
@@ -31,7 +31,7 @@ public class GrievanceService {
     // Create new grievance with specific status and ticket number
     public Grievance createGrievance(Grievance grievance) {
         grievance.setCreatedAt(LocalDate.now());
-        grievance.setUpdatedAt(LocalDateTime.now());
+        grievance.setUpdatedAt(LocalDate.now());
 
         if (grievance.getStatus() == null || grievance.getStatus().isEmpty()) {
             grievance.setStatus("PENDING");
@@ -73,7 +73,7 @@ public class GrievanceService {
             throw new IllegalArgumentException("Invalid status: " + status);
         }
 
-        grievance.setUpdatedAt(LocalDateTime.now());
+        grievance.setUpdatedAt(LocalDate.now());
         return grievanceRepository.save(grievance);
     }
 
@@ -84,7 +84,7 @@ public class GrievanceService {
 
         if (isValidStatus(status)) {
             grievance.setStatus(status);
-            grievance.setUpdatedAt(LocalDateTime.now());
+            grievance.setUpdatedAt(LocalDate.now());
             return grievanceRepository.save(grievance);
         } else {
             throw new IllegalArgumentException("Invalid status: " + status);
@@ -102,7 +102,7 @@ public class GrievanceService {
                 .orElseThrow(() -> new RuntimeException("Assignee not found"));
 
         grievance.setAssignee(assignee);  
-        grievance.setUpdatedAt(LocalDateTime.now());
+        grievance.setUpdatedAt(LocalDate.now());
         return grievanceRepository.save(grievance);
     }
     //Assigns grievance to an assignee

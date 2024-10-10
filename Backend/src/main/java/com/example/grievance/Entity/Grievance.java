@@ -12,8 +12,7 @@ import java.time.LocalDateTime;
 public class Grievance {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private int id;
+
     @Column(unique = true, nullable = false)
     private String ticketNumber;
 
@@ -46,17 +45,17 @@ public class Grievance {
     private LocalDate createdAt;
 
     @Column(nullable = false)
-    private LocalDateTime updatedAt;
+    private LocalDate updatedAt;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDate.now();
-        updatedAt = LocalDateTime.now();
+        updatedAt = LocalDate.now();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+        updatedAt = LocalDate.now();
     }
 
     @ManyToOne
@@ -71,8 +70,7 @@ public class Grievance {
     }
 
 
-//    @Column(name = "assignee_id")
-//    private String assigneeId;
+
 
 
 
